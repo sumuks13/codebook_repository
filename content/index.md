@@ -1,7 +1,5 @@
 ---
-title: Welcome to My Notes
-tags:
-  - Java
+title: A curated collection of programming concepts for quick access and future reference
 ---
 
 ## Table of Contents
