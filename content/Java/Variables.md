@@ -16,23 +16,24 @@ its value is instance-specific and is not shared among instances.
 A variable that is declared as static is called a static variable. 
 You can create a single copy of the static variable and share it among all the instances of the class. Memory allocation for static variables happens only once when the class is loaded in the memory.
 
-
-### Typecasting
+## Typecasting
 
 Converting one data type into another.
 
-### 1. Widening
+#### 1. Widening
 
+```java
 int a=10;  
 float f=a;
+```
+#### 2. Narrowing
 
-### 2. Narrowing
-
+```java
 float f=10.5f;  
 //int a=f; //Compile time error  
 int a=(int)f;
-
-### Overflow
+```
+## Overflow
 
 ```run-java
 public class Simple {

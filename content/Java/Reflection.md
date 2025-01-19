@@ -4,7 +4,7 @@ tags: [[Java]]
 
 It is used only for IDEs, Debuggers, Test Tools.
 
-### java.lang.Class class
+#### java.lang.Class class
 
 The java.lang.Class class performs mainly two tasks:
 

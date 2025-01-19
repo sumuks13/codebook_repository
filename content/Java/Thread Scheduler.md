@@ -10,7 +10,7 @@ A component of Java that decides which thread to run or execute and which thread
 
 ## Thread Scheduler Algorithms
 
-### First Come First Serve Scheduling:
+#### First Come First Serve Scheduling:
 
 In this scheduling algorithm, the scheduler picks the threads thar arrive first in the runnable queue. Observe the following table:
 
@@ -22,8 +22,7 @@ In this scheduling algorithm, the scheduler picks the threads thar arrive first 
 |t4|3|
 t1 -> t2 -> t3 -> t4
 
-
-### Time-slicing scheduling:
+#### Time-slicing scheduling:
 <span class="smallimg"><span class="leftimg"> ![[Pasted image 20240511104248.png]] </span></span>
 
 Usually, the First Come First Serve algorithm is non-preemptive, which is bad as it may lead to infinite blocking (also known as starvation). 
@@ -32,8 +31,7 @@ To avoid that, some time-slices are provided to the threads so that after some t
 
 Thus, the other waiting threads also get time to run their job.
 
-
-### Preemptive-Priority Scheduling:
+#### Preemptive-Priority Scheduling:
 
 Suppose there are multiple threads available in the runnable state. The thread scheduler picks that thread that has the highest priority. Since the algorithm is also preemptive, therefore, time slices are also provided to the threads to avoid starvation. Thus, after some time, even if the highest priority thread has not completed its job, it has to release the CPU because of preemption.
 

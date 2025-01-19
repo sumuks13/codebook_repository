@@ -2,7 +2,7 @@ tags : [[Java]], [[Thread]], [[Runnable]]
 
 Multithreading is a process of executing multiple threads simultaneously.
 
-## What is Thread in java ?
+#### What is Thread in java ?
 
 A thread is a lightweight subprocess, the smallest unit of processing. It is a separate path of execution.
 Threads are independent. If there occurs exception in one thread, it doesn't affect other threads. It uses a shared memory area.
@@ -10,24 +10,23 @@ Threads are independent. If there occurs exception in one thread, it doesn't aff
 ![[Pasted image 20240504180632.png]]
 As shown in the above figure, a thread is executed inside the process. There is context-switching between the threads. There can be multiple processes inside the OS, and one process can have multiple threads.
 
-### Advantages of Java Multithreading
+#### Advantages of Java Multithreading
 
 1) It **doesn't block the user**/application because threads are independent and you can perform multiple operations at the same time.
 2) You **can perform many operations together, so it saves time**.
-
 
 ## Multitasking
 
 Multitasking is a process of executing multiple tasks simultaneously. We use multitasking to make efficient use the CPU. Multitasking can be achieved in two ways:
 
-### 1) Process-based Multitasking (Multiprocessing)
+#### 1) Process-based Multitasking (Multiprocessing)
 
 - Each process has an address in memory. In other words, each process allocates a separate memory area.
 - A process is heavyweight.
 - Cost of communication between the process is high.
 - Switching from one process to another requires some time for saving and loading [registers](https://www.javatpoint.com/register-memory), memory maps, updating lists, etc.
 
-### 2) Thread-based Multitasking (Multithreading)
+#### 2) Thread-based Multitasking (Multithreading)
 
 - Threads share the same address space.
 - A thread is lightweight.
@@ -37,8 +36,7 @@ Multitasking is a process of executing multiple tasks simultaneously. We use mul
 
 Java provides **Thread class** to achieve thread programming. Thread class provides [constructors](https://www.javatpoint.com/java-constructor) and methods to create and perform operations on a thread. Thread class extends [Object class](https://www.javatpoint.com/object-class) and implements Runnable interface.
 
-
-# Life cycle of a Thread (Thread States)
+#### Life cycle of a Thread (Thread States)
 
 In Java, a thread always exists in any one of the following states:
 
@@ -81,7 +79,7 @@ If there are a lot of threads in the waiting or blocked state, then it is the du
 
 In Java, one can get the current state of a thread using the **Thread.getState()** method. The **java.lang.Thread.State** class of Java provides the [[Enumeration]] constants to represent the state of a thread.
 
-# How to create a thread in Java ?
+## How to create a thread in Java ?
 
 There are two ways to create a thread:
 

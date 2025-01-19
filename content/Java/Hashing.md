@@ -6,7 +6,7 @@ tags : [[Algorithms]], [[Collection]]
 
 HashMap contains an array of the nodes, and the node is represented as a class. It uses an array and LinkedList data structure internally for storing Key and Value. There are four fields in HashM
 
-### Equals vs HashCode
+#### Equals vs HashCode
 
 - **equals():** It checks the equality of two objects. It compares the Key, whether they are equal or not. It is a method of the Object class. It can be overridden. If you override the equals() method, then it is mandatory to override the hashCode() method.
 
@@ -18,7 +18,7 @@ Array of the node is called buckets. Each node has a data structure like a Linke
 
 ![[Pasted image 20240525055303.png | 500]]
 
-### Example
+#### Example
 
 In the following example, we want to insert three (Key, Value) pair in the HashMap.
 
@@ -30,17 +30,17 @@ map.put("Ritesh", 39);  
 ```
 
 When we call the put() method, then it calculates the hash code of the Key "Aman." Suppose the hash code of "Aman" is 2657860. To store the Key in memory, we have to calculate the index.
-### Calculating Index
+#### Calculating Index
 
 Index minimizes the size of the array. The Formula for calculating the index is:
 
-```
+```java
 Index = hashcode(Key) & (n-1)  
 ```
 
 Where n is the size of the array. Hence the index value for "Aman" is:
 
-```
+```java
 Index = 2657860 & (16-1) = 4  
 ```
 

@@ -1,10 +1,10 @@
 tags: [[Java]]
 
-Compiler
+#### Compiler
 
 Translates the entire source code into machine code before execution. This results in faster execution because no translation is needed during runtime. Takes more memory.
 
-Interpreter
+#### Interpreter
 
 Translates code line by line during execution. This makes it easier to detect errors but potentially slows down the program. Takes more time.
 

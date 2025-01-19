@@ -1,5 +1,7 @@
+tags: [[OOPS]]
+
 Abstraction lets you focus on what the [object](https://www.javatpoint.com/object-and-class-in-java) does instead of how it does it.
-	
+
 A class which is declared as abstract is known as an **abstract class**. It can have abstract and non-abstract methods. It needs to be extended and its method implemented. It cannot be instantiated (Abstract classes cannot have objects)
 
 - An abstract class must be declared with an abstract keyword.
@@ -8,7 +10,7 @@ A class which is declared as abstract is known as an **abstract class**. It can
 - It can have [constructors](https://www.javatpoint.com/java-constructor) and static methods also.
 - It can have final methods which will force the subclass not to change the body of the method.
 
-### Abstract Method in Java
+## Abstract Method in Java
 
 A method which is declared as abstract and does not have implementation is known as an abstract method.
 

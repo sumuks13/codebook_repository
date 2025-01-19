@@ -5,7 +5,7 @@ Java does memory management automatically. Java uses an automatic memory managem
 
 ![[Pasted image 20240419061735.png]]
 
-### Method Area
+#### Method Area
 
 Method Area is a part of the heap memory which is shared among all the threads. It creates when the JVM starts up. It is used to store class structure, superclass name, interface name, and constructors. The JVM stores the following kinds of information in the method area:
 
@@ -14,7 +14,7 @@ Method Area is a part of the heap memory which is shared among all the threads. 
 - Type's direct superclass name
 - A structured list of the fully qualified names of super interfaces.
 
-### Heap Area
+#### Heap Area
 
 Heap stores the actual objects. It creates when the JVM starts up. The user can control the heap if needed. It can be of fixed or dynamic size. When you use a new keyword, the JVM creates an instance for the object in a heap. While the reference of that object stores in the stack. There exists only one heap for each running JVM process. When heap becomes full, the garbage is collected.
 
@@ -29,9 +29,13 @@ Reference Types of Objects on Heap:
 - **Strong reference:** It is very simple as we use it in our daily programming. Any object which has Strong reference attached to it is not eligible for garbage collection. We can create a strong reference by using new keyword.
 - **Weak Reference:** It does not survive after the next garbage collection process. It is defined in **java.lang.ref.WeakReference** class.
 - **Soft Reference:** It is collected when the application is running low on memory.
-- **Phantom Reference:** The object which has only phantom reference pointing them can be collected whenever garbage collector wants to collect. `PhantomReference<StringBuilder> reference = new PhantomReference<>(new StringBuilder());'
+- **Phantom Reference:** The object which has only phantom reference pointing them can be collected whenever garbage collector wants to collect. 
 
-### Stack Area
+```java
+PhantomReference<StringBuilder> reference = new PhantomReference<>(new StringBuilder());
+```
+
+#### Stack Area
 
 Stack Area generates when a thread creates. It can be of either fixed or dynamic size. The stack memory is allocated per thread. It is used to store data and partial results. It contains references to heap objects. It also holds the value itself rather than a reference to an object from the heap. The variables which are stored in the stack have certain visibility, called scope.
 
@@ -43,10 +47,10 @@ Stack Area generates when a thread creates. It can be of either fixed or dynamic
 - The frame stops the current method, if its method invokes another method or if the method completes.
 - The frame created by a thread is local to that thread and cannot be referenced by any other thread.
 
-### Native Method Stack
+#### Native Method Stack
 
 It is also known as C stack. It is a stack for native code written in a language other than Java. Java Native Interface (JNI) calls the native stack. The performance of the native stack depends on the OS.
 
-### PC Registers
+#### PC Registers
 
 Each thread has a Program Counter (PC) register associated with it. PC register stores the return address or a native pointer. It also contains the address of the JVM instructions currently being executed.

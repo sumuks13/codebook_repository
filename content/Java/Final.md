@@ -8,7 +8,7 @@ The **final keyword** in java is used to restrict the user. The java final key
 
 If you want to create a variable that is initialized at the time of creating object and once initialized may not be changed, it is useful. For example PAN CARD number of an employee. If you try to modify, you get Output: Compile Time Error
 
-### Q) Can we initialize blank final variable?
+#### 1. Can we initialize blank final variable?
 
 Yes, but only in constructor.
 
@@ -23,11 +23,11 @@ class Bike10{  
 }
 ```
 
-### static blank final variable
+#### Static blank final variable
 
 A static final variable that is not initialized at the time of declaration is known as static blank final variable. It can be initialized only in static block.
 
-### Example of static blank final variable
+#### Example of static blank final variable
 
 
 ```java

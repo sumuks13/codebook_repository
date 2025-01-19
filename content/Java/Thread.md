@@ -1,17 +1,17 @@
 tags :[[Multithreading]]
 
-### Thread class:
+## Thread class:
 
 Thread class provide constructors and methods to create and perform operations on a thread.Thread class extends Object class and implements Runnable interface.
 
-### Commonly used Constructors of Thread class:
+#### Commonly used Constructors of Thread class:
 
 - Thread()
 - Thread(String name)
 - Thread(Runnable r)
 - Thread(Runnable r,String name)
 
-### Commonly used methods of Thread class:
+#### Commonly used methods of Thread class:
 
 1. **public void run():** is used to perform action for a thread.
 
@@ -71,7 +71,7 @@ class Multi extends Thread{
 }
 ```
 
-# Thread.sleep()
+#### Thread.sleep()
 
 he method sleep() is being used to halt the working of a thread for a given amount of time. The time up to which the thread remains in the sleeping state is known as the sleeping time of the thread. After the sleeping time is over, the thread starts its execution from where it has left.
 
@@ -79,18 +79,18 @@ Whenever another thread does interruption while the current thread is already in
 
 IllegalArguementException is thrown if time (-1ms) is a negative value.
 
-# Can we start a thread twice
+#### Can we start a thread twice
 
 No. After starting a thread, it can never be started again. If you does so, an _IllegalThreadStateException_ is thrown. In such case, thread will run once but for second time, it will throw exception.
 
-# What if we call Java run() method directly instead start() method?
+#### What if we call Java run() method directly instead start() method?
 
 - Each thread <mark style="background: #FFB86CA6;">starts</mark> in a separate call stack.
 - Invoking the run() method from the main thread, the run() method goes onto the current call stack rather than at the beginning of a new call stack.
 
 ![[Pasted image 20240511112620.png]]
 
-# Thread.join()
+#### Thread.join()
 
 When the join() method is invoked, the current thread stops its execution and the thread goes into the wait state. The current thread remains in the wait state until the thread on which the join() method is invoked has achieved its dead state.
 
@@ -133,15 +133,15 @@ class TestCallRun2 extends Thread{
 ```
 
 
-# Thread.priority()
+#### Thread.priority()
 
-## 3 constants defined in Thread class:
+3 constants defined in Thread class:
 
 1. public static int MIN_PRIORITY - 1
 2. public static int NORM_PRIORITY - 5
 3. public static int MAX_PRIORITY - 10
 
-# Daemon Thread
+## Daemon Thread
 
 - It provides services to other threads for background supporting tasks. It has no role in life than to serve user threads.
 - Its life depends on user threads.
@@ -149,7 +149,7 @@ class TestCallRun2 extends Thread{
 
 If you want to make a user thread as Daemon, it must be done before starting the thread otherwise it will throw IllegalThreadStateException.
 
-# Interrupting a Thread:
+## Interrupting a Thread:
 
 - If any thread is in sleeping or waiting state (i.e. sleep() or wait() is invoked), calling the interrupt() method on the thread, breaks out the sleeping or waiting state throwing InterruptedException. 
 - If the thread is not in the sleeping or waiting state, calling the interrupt() method performs normal behaviour and doesn't interrupt the thread but sets the interrupt flag to true.
@@ -157,15 +157,14 @@ If you want to make a user thread as Daemon, it must be done before starting the
 - **public static boolean interrupted()** - returns the interrupted flag afterthat it sets the flag to false if it is true.
 - **public boolean isInterrupted()** - returns the interrupted flag either true or false.
 
+## Java Monitors:
 
-## **Java Monitors**:
-    
 - A **monitor** in Java is like a **guardian** for shared resources.
 - It ensures that only one thread can access a shared resource at a time.
 - Monitors provide mutual exclusion and coordination for concurrent programs.
 
-### Reentrant Monitors:
-    
+#### Reentrant Monitors:
+
 - **Reentrant** means a thread can **re-enter** the same monitor it already holds.
 - In other words, if a thread is inside a synchronized method (holding the monitor), it can call another synchronized method without blocking itself.
 - Consider a scenario where a synchronized method calls another synchronized method.

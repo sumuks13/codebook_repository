@@ -32,13 +32,13 @@ The Iterable interface is the root interface for all the collection classes. The
 
 It contains only one abstract method. i.e.,
 
-```
+```java
 Iterator<T> iterator()  
 ```
 
 It returns the iterator over the elements of type T.
 
-### Iterating ArrayList using Iterator
+#### Iterating ArrayList using Iterator
 
 ```run-java
 import java.util.*;  

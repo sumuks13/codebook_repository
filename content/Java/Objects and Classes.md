@@ -1,6 +1,5 @@
 An object is an instance of a class. A class is a template or blueprint from which objects are created. 
 
-
 An object in Java is the physical as well as a logical entity, whereas, a class in Java is a logical entity only.
 
 ![[Pasted image 20240415085227.png]]
@@ -16,7 +15,7 @@ class in Java can contain:
 
 In Java, a method is a function defined under a class which is used to expose the behavior of an object.
 
-### Ways to initialize object 
+## Ways to initialize object 
 
 By reference variable
 	Student s1=new Student();  
@@ -38,10 +37,9 @@ constructor which has a specific number of parameters is called a parameterized 
 ![[Pasted image 20240415090316.png]]
 
 
-
 ![[Pasted image 20240415085832.png]]
 
-### Anonymous object
+## Anonymous object
 
 Anonymous simply means nameless. An object which has no reference is known as an anonymous object. It can be used at the time of object creation only.
 

@@ -46,7 +46,7 @@ public class TestDeadlockExample1 {
 }       
 ```
 
-### How to avoid deadlock?
+#### How to avoid deadlock?
 
 Deadlocks cannot be completely resolved. But we can avoid them by following basic rules mentioned below:
 

@@ -1,5 +1,4 @@
-tags : [[Java]]
-
+tags : [[Java]], [[Multithreading]]
 
 - supplyAsync()
 - runAsync()

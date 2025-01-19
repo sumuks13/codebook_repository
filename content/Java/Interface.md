@@ -16,7 +16,7 @@ Interface fields are public, static and final by default, and the methods are pu
 ![[Pasted image 20240416091331.png]]
 
 
-## Multiple inheritance in Java by interface
+#### Multiple inheritance in Java by interface
 
 If a class implements multiple interfaces, or an interface extends multiple interfaces, it is known as multiple inheritance.
 
@@ -31,7 +31,7 @@ interface Drawable{  
 }
 ```
 
-## What is marker or tagged interface?
+#### What is marker or tagged interface?
 
 An interface which has no member is known as a marker or tagged interface, for example, [Serializable](https://www.javatpoint.com/serialization-in-java), Cloneable, Remote, etc. They are used to provide some essential information to the JVM so that JVM may perform some useful operation.
 

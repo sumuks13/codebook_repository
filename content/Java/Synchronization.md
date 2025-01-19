@@ -12,7 +12,7 @@ There are two types of synchronization
 1. Process Synchronization
 2. Thread Synchronization
 
-### Thread Synchronization
+#### Thread Synchronization
 
 There are two types of thread synchronization mutual exclusive and inter-thread communication.
 
@@ -29,7 +29,7 @@ There are two types of thread synchronization mutual exclusive and inter-thread 
 - The system performance may degrade because of the slower working of synchronized keyword.
 - Java synchronized block is more efficient than Java synchronized method.
 
-### Concept of Lock in Java
+#### Concept of Lock in Java
 
 Every object has a lock associated with it. By convention, a thread that needs consistent access to an object's fields has to acquire the object's lock before accessing them, and then release the lock when it's done with them.
 
@@ -120,7 +120,7 @@ class Table{
 }  
 ```
 
-### Synchronized block on a class lock:
+#### Synchronized block on a class lock:
 
 The block synchronizes on the lock of the object denoted by the reference .class. 
 A static synchronized method printTable(int n) in class Table is equivalent to the following declaration:
@@ -135,21 +135,21 @@ static void printTable(int n) {
 
 ## Inter-Thread Communication
 
-### 1) wait() method
+#### 1) wait() method
 
 The wait() method causes current thread to release the lock and wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
 
 The current thread must own this object's monitor, so it must be called from the synchronized method only otherwise it will throw exception.
 
-### 2) notify() method
+#### 2) notify() method
 
 The notify() method wakes up a single thread that is waiting on this object's monitor. If any threads are waiting on this object, one of them is chosen to be awakened. The choice is arbitrary and occurs at the discretion of the implementation.
 
-### 3) notifyAll() method
+#### 3) notifyAll() method
 
 Wakes up all threads that are waiting on this object's monitor.
 
-## Understanding the process of inter-thread communication
+#### Understanding the process of inter-thread communication
 
 ![inter thread communication in java](https://static.javatpoint.com/core/images/inter-thread-communication-in-java.png)
 
@@ -163,11 +163,11 @@ The point to point explanation of the above diagram is as follows:
 6. After completion of the task, thread releases the lock and exits the monitor state of the object.
 
 
-### 1. Why wait(), notify() and notifyAll() methods are defined in Object class not Thread class?
+## 1. Why wait(), notify() and notifyAll() methods are defined in Object class not Thread class?
 
 It is because they are related to **lock** and object has a lock.
 
-### 2. Difference between wait and sleep?
+## 2. Difference between wait and sleep?
 
 Let's see the important differences between wait and sleep methods.
 

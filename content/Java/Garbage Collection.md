@@ -12,11 +12,11 @@ When an object allocates, the JRockit JVM checks the size of the object. It dist
 The small objects are stored in Thread Local Area (TLA) which is a free chunk of the heap. TLA does not synchronize with other threads. When TLA becomes full, it requests for new TLA.
 On the other hand, large objects that do not fit inside the TLA directly allocated into the heap.
 
-### When is an Object eligible for GC ?
+#### When is an Object eligible for GC ?
 
 We can say that an object is eligible for garbage collection when no live thread can access it. The garbage collector considers that object as eligible for deletion. If a program has a reference variable that refers to an object, that reference variable available to live thread, this object is called **reachable**.
 
-### Types of Garbage Collection
+#### Types of Garbage Collection
 
 There are five types of garbage collection are as follows:
 
@@ -26,7 +26,7 @@ There are five types of garbage collection are as follows:
 - **Concurrent Mark Sweep (CMS) Collector:** It does the garbage collection for the old generation. It is also known as Concurrent Low Pause Collector.
 - **G1 Garbage Collector:** It introduced in Java 7. Its objective is to replace the CMS collector. It is a parallel, concurrent, and CMS collector. There is no young and old generation space. It divides the heap into several equal sized heaps. It first collects the regions with lesser live data.
 
-### What are the common Garbage Collection tuning parameters in Java?
+#### What are the common Garbage Collection tuning parameters in Java?
 
 A: The following are some common Garbage Collection tuning parameters in Java:
 
@@ -38,33 +38,35 @@ A: The following are some common Garbage Collection tuning parameters in Java:
 -XX:NewRatio: Sets the ratio of the young generation to the old generation
 -XX:SurvivorRatio: Sets the ratio of survivor space to Eden space
 
-How can an object be unreferenced?
+#### How can an object be unreferenced?
 
 There are many ways:
 
-By nulling the reference
-By assigning a reference to another
-By anonymous object etc
-
 1) By nulling a reference:
 
+```java
 Employee e=new Employee();  
-e=null;  
+e=null;
+```
 
 2) By assigning a reference to another:
 
+```java
 Employee e1=new Employee();  
 Employee e2=new Employee();  
 e1=e2;//now the first object referred by e1 is available for garbage collection 
+```
 
 3) By anonymous object:
-new Employee();  
 
-finalize() method:
+```java
+new Employee();  
+```
+
+#### finalize() method
 
 The finalize() method is invoked each time before the object is garbage collected. This method can be used to perform cleanup processing.
-
-gc() method
+#### gc() method
 
 The gc() method is used to invoke the garbage collector to perform cleanup processing. The gc() is found in System and Runtime classes.
 
