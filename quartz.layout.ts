@@ -9,7 +9,6 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/sumuks13",
-    //  "Discord Community": "https://discord.gg/cRFFHYye7t",
     },
   }),
 }
@@ -17,22 +16,33 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
+    Component.ConditionalRender({
+      component: Component.Breadcrumbs(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
-    Component.Breadcrumbs(),
     Component.TagList(),
   ],
   left: [
     Component.PageTitle(),
-    //Component.DesktopOnly(Component.Spacer()),
-    Component.Search(),
+    Component.MobileOnly(Component.Spacer()),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+        { Component: Component.ReaderMode() },
+      ],
+    }),
+    //Component.Explorer(),
     Component.Graph(),
-    //Component.DesktopOnly(Component.Explorer()),
   ],
   right: [
-    Component.Darkmode()    
     //Component.DesktopOnly(Component.TableOfContents()),
-    //Component.Backlinks(),
+    Component.Backlinks(),
   ],
 }
 
@@ -42,10 +52,16 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    //Component.Graph(),
-    Component.Darkmode(),
-    //Component.DesktopOnly(Component.Explorer()),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+      ],
+    }),
+    Component.Explorer(),
   ],
   right: [],
 }
