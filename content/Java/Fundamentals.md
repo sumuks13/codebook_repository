@@ -1,13 +1,11 @@
 tags : [[Java]]
 #### 1. What is the difference between JDK , JRE and JVM?
 
-JDK stands for Java Development Kit. It contains the tools and libraries for development of Java programs along with JRE and JVM. It also contains compilers and debuggers.
+![[Pasted image 20240414194835.png | right | 300]] JDK stands for Java Development Kit. It contains the tools and libraries for development of Java programs along with JRE and JVM. It also contains compilers and debuggers.
 
 JRE stands for Java Runtime Environment. It provides libraries and JVM that is required to run a Java program.
 
 JVM is an abstract m/c that executes java bytecode. It is platform dependent. Converts bytecode into m/c code for a specific platform. Its implementation is known as JRE.
-
-![[Pasted image 20240414194835.png]]
 #### 2. What is JIT Compiler?
 
 Just In Time Compiler is used for performance improvement in Java. It is compilation done at execution time rather than earlier.

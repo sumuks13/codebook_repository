@@ -2,7 +2,7 @@ tags : [[Java]], [[Collections Framework]]
 
 A Collection means a group of objects. 
 
-![[Pasted image 20240521054600.png]]
+![[Pasted image 20240521054600.png | center | 600]]
 ## Collection Interface
 
 The Collection interface is the interface which is implemented by all the classes in the collection framework. It declares the methods that every collection will have.
