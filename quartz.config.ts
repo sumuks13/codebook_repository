@@ -61,7 +61,7 @@ const config: QuartzConfig = {
       }),
       Plugin.SyntaxHighlighting({
         theme: {
-          light: "one-dark-pro",
+          light: "one-light",
           dark: "one-dark-pro"
         },
         keepBackground: false,
