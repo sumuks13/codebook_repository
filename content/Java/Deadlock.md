@@ -9,6 +9,7 @@ public class TestDeadlockExample1 {
   public static void main(String[] args) {  
     final String resource1 = "resource 1";  
     final String resource2 = "resource 2";  
+    
     // t1 tries to lock resource1 then resource2  
     Thread t1 = new Thread() {  
       public void run() {  

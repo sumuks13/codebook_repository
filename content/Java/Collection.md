@@ -1,121 +1,10 @@
-tags : [[Java]], [[Collections Framework]]
+tags : [[Java]], [[Collections Framework]], [[List]], [[Set]], [[Queue]], [[Map]]
 
 A Collection means a group of objects. 
 
 ![[Pasted image 20240521054600.png | center | 600]]
-## Collection Interface
 
-The Collection interface is the interface which is implemented by all the classes in the collection framework. It declares the methods that every collection will have.
-
-Some of the methods of Collection interface are Boolean add ( Object obj), Boolean addAll ( Collection c), void clear(), etc. which are implemented by all the subclasses of Collection interface.
-
-#### List Interface
-
-List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the **ordered** collection of objects. It can have **duplicate** values.
-
-List interface is implemented by the classes ArrayList, LinkedList, Vector, and Stack.
-
-#### ArrayList
-
-The ArrayList class implements the List interface. It uses a dynamic array to store the duplicate element of different data types. The ArrayList class maintains the insertion order and is non-synchronized.
-
-ArraliList.size() : The size represents the total number of elements present in the array. If the list has no elements added then the size of the array list is zero.
-
-Capacity represents the total number of elements the array list can contain. Therefore, the capacity of an array list is always greater than or equal to the size of the array list. When we add an element to the array list, it checks whether the size of the array list has become equal to the capacity or not. If yes, then the capacity of the array list increases.
-
-```java
-//Converting ArrayList to Array  
-String[] array = fruitList.toArray(new String[fruitList.size()]);
-String[] array = fruitList.toArray();
-```
-
-#### LinkedList
-
-LinkedList implements the Collection interface. It uses a doubly linked list internally to store the elements. It can store the duplicate elements. It maintains the insertion order and is not synchronized. In LinkedList, the manipulation is fast because no shifting is required.
-
-```java
-//Traversing the list of elements in reverse order  
-Iterator i=ll.descendingIterator();
-```
-
-#### Vector
-
-Vector uses a dynamic array to store the data elements. It is similar to ArrayList. However, It is synchronized and contains many methods that are not the part of Collection framework.
-
-#### Stack
-
-The stack is the subclass of Vector. It implements the last-in-first-out data structure, i.e., Stack. The stack contains all of the methods of Vector class and also provides its methods like boolean push(), boolean peek(), boolean push(object o), which defines its properties.
-
-
-#### Queue Interface
-
-Queue interface maintains the first-in-first-out order. There are various classes like PriorityQueue, Deque, and ArrayDeque which implements the Queue interface.
-
-#### PriorityQueue
-
-The PriorityQueue class implements the Queue interface. It holds the elements or objects which are to be processed by their priorities. PriorityQueue doesn't allow null values to be stored in the queue.
-
-#### Deque Interface
-
-Deque interface extends the Queue interface. In Deque, we can remove and add the elements from both the side. Deque stands for a double-ended queue which enables us to perform the operations at both the ends.
-
-#### ArrayDeque
-
-ArrayDeque class implements the Deque interface. It facilitates us to use the Deque. Unlike queue, we can add or delete the elements from both the ends.
-
-ArrayDeque is faster than ArrayList and Stack and has no capacity restrictions.
-
-#### Set Interface
-
-Set Interface in Java is present in java.util package. It extends the Collection interface. It represents the unordered set of elements which doesn't allow us to store the duplicate items. We can store at most one null value in Set. 
-Set is implemented by HashSet, LinkedHashSet, and TreeSet.
-
-#### HashSet
-
-HashSet class implements Set Interface. It represents the collection that uses a hash table for storage. Hashing is used to store the elements in the HashSet. It contains unique items.
-
-#### LinkedHashSet
-
-LinkedHashSet class represents the LinkedList implementation of Set Interface. It extends the HashSet class and implements Set interface. Like HashSet, It also contains unique elements. It maintains the insertion order and permits null elements.
-
-#### SortedSet Interface
-
-SortedSet is the alternate of Set interface that provides a total ordering on its elements. The elements of the SortedSet are arranged in the increasing (ascending) order.
-
-#### TreeSet
-
-Java TreeSet class implements the Set interface that uses a tree for storage. Like HashSet, TreeSet also contains unique elements. However, the access and retrieval time of TreeSet is quite fast. The elements in TreeSet stored in ascending order.
-## ClassCast Exception in TreeSet
-
-If we add an object of the class that is not implementing the Comparable interface, the ClassCast Exception is raised.
-
-It is because the TreeSet maintains the sorting order, and for doing the sorting the comparison of different objects that are being inserted in the TreeSet is must, which is accomplished by implementing the Comparable interface. So all the Objects used for TreeSet must implement Comparable interface.
-
-## Java ListIterator Interface
-
-ListIterator Interface is used to traverse the element in a backward and forward direction.
-
-## Methods of Java ListIterator Interface:
-
-|Method|Description|
-|---|---|
-|void add(E e)|This method inserts the specified element into the list.|
-|boolean hasNext()|This method returns true if the list iterator has more elements while traversing the list in the forward direction.|
-|E next()|This method returns the next element in the list and advances the cursor position.|
-|int nextIndex()|This method returns the index of the element that would be returned by a subsequent call to next()|
-|boolean hasPrevious()|This method returns true if this list iterator has more elements while traversing the list in the reverse direction.|
-|E previous()|This method returns the previous element in the list and moves the cursor position backward.|
-|E previousIndex()|This method returns the index of the element that would be returned by a subsequent call to previous().|
-|void remove()|This method removes the last element from the list that was returned by next() or previous() methods|
-|void set(E e)|This method replaces the last element returned by next() or previous() methods with the specified element.|
-
-## When to use what
-
-![[Pasted image 20240525052708.png]]
-
-![[Pasted image 20240525053052.png]]
-
-#### Lists
+### **Lists**
 
 | Lists Comparison Table                                   | Add/remove element in the beginning | Add/remove element in the middle | Add/remove element in the end | Get i-th element (random access) | Find element                | Traversal order |
 | -------------------------------------------------------- | ----------------------------------- | -------------------------------- | ----------------------------- | -------------------------------- | --------------------------- | --------------- |
@@ -127,7 +16,7 @@ ListIterator Interface is used to traverse the element in a backward and forward
 
 - Memory overhead in the LinkedList is more as compared to the ArrayList. It is because, in a LinkedList, we have two extra links (next and previous) as it is required to store the address of the previous and the next nodes, and these links consume extra space. Such links are not present in an ArrayList.
 
-#### Sets
+### **Sets**
 
 | Sets Comparison Table                                          | Add element      | Remove element   | Find element | Traversal order                                      |
 | -------------------------------------------------------------- | ---------------- | ---------------- | ------------ | ---------------------------------------------------- |
@@ -135,12 +24,12 @@ ListIterator Interface is used to traverse the element in a backward and forward
 | _[LinkedHashSet](https://www.baeldung.com/java-linkedhashset)_ | amortized _O(1)_ | amortized _O(1)_ | _O(1)_       | as inserted                                          |
 | _[TreeSet](https://www.baeldung.com/java-tree-set)_            | _O(log(n))_      | _O(log(n))_      | _O(log(n))_  | sorted, according to elements comparison criterion   |
 | _[EnumSet](https://www.baeldung.com/java-enumset)_             | _O(1)_           | _O(1)_           | _O(1)_       | according to the definition order of the enum values |
-#### Queues
+### **Queues**
 
 1. _LinkedList_, _ArrayDeque_ –  can act as the stack, queue, and dequeue data structures. Generally, _ArrayDeque_ is faster than _LinkedList_. Hence it’s the default choice
 2. _[PriorityQueue](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/PriorityQueue.html) – Queue_ interface implementation backed by the binary heap data structure. Used for fast (_O(1)_) element retrieval, which has the highest priority. Addition and removal work in _O(log(n))_ time
 
-#### Maps
+### **Maps**
 
 We use put() method to insert the Key and Value pair in the HashMap, the default size of HashMap is 16 (0 to 15).
 
@@ -150,3 +39,136 @@ We use put() method to insert the Key and Value pair in the HashMap, the default
 | _[LinkedHashMap](https://www.baeldung.com/java-linked-hashmap)_ | amortized _O(1)_ | amortized _O(1)_ | _O(1)_       | as inserted                                          |
 | _[TreeMap](https://www.baeldung.com/java-treemap)_              | _O(log(n))_      | _O(log(n))_      | _O(log(n))_  | sorted, according to elements comparison criterion   |
 | _[EnumMap](https://www.baeldung.com/java-enum-map)_             | _O(1)_           | _O(1)_           | _O(1)_       | according to the definition order of the enum values |
+
+### **What is the Collection interface in Java?**
+
+- The Collection interface is the interface which is implemented by all the classes in the collection framework. It declares the methods that every collection will have.
+
+### **Which interfaces extend the Collection interface?**
+
+- `List`
+- `Set`
+- `Queue`
+- `Deque` (extends Queue, indirectly inherits Collection)
+
+### **Is Map a part of the Collection interface hierarchy?**
+
+No. `Map` is part of the Collections Framework but **does not extend** the `Collection` interface. It represents key-value pairs, not individual elements.
+
+### **What are the commonly used methods of the Collection interface?**
+
+| Method               | Description                       |
+| -------------------- | --------------------------------- |
+| `add(E e)`           | Adds an element                   |
+| `remove(Object o)`   | Removes a specific element        |
+| `clear()`            | Removes all elements              |
+| `size()`             | Returns number of elements        |
+| `isEmpty()`          | Checks if collection is empty     |
+| `contains(Object o)` | Checks if element exists          |
+| `iterator()`         | Returns an iterator for traversal |
+
+### **What is the difference between Collection and Collections?**
+
+- `Collection` is an **interface**.
+- `Collections` is a **utility class** with static methods like `sort()`, `shuffle()`, `reverse()`.
+
+### **What is the purpose of the `iterator()` method?**
+
+It returns an `Iterator` object used to traverse the elements of the collection one by one.
+
+```java
+Iterator<String> it = collection.iterator(); 
+while (it.hasNext()) {
+	System.out.println(it.next());
+}
+```
+
+### **What happens if you modify a collection while iterating?**
+
+You may get a `ConcurrentModificationException`. To safely remove elements during iteration, use `Iterator.remove()` method.
+
+### **What is the return type of `add()` method in Collection interface?**
+
+It returns a `boolean`. `true` if the element was added successfully.
+
+### **What is the use of `removeIf()` method in Collection?**
+
+It removes all elements that match a given condition (predicate).
+
+```java
+list.removeIf(n -> n % 2 == 0); // remove even numbers
+```
+
+### **What is the default implementation of Collection?**
+
+There is **no default implementation** of `Collection`. You need to use a class like `ArrayList`, `HashSet`, etc.
+
+### **Is Collection thread-safe?**
+
+No. Implementations like `ArrayList` or `HashSet` are **not thread-safe**. You can use:
+
+- `Collections.synchronizedCollection(collection)`
+- `CopyOnWriteArrayList` for thread-safe operations
+
+### **Can we sort a Collection?**
+
+Only if it's a `List`, using `Collections.sort()`. Other collections like `Set` don't support sorting directly.
+
+### **What’s the difference between `add()` and `addAll()`?**
+
+- `add()` inserts a single element
+- `addAll()` adds all elements from another collection
+
+### **How do you convert a Collection to an array?**
+
+Using the `toArray()` method.
+
+```java
+Object[] array = collection.toArray();
+```
+
+### **What happens when we call `equals()` on two collections?**
+
+They are considered equal if:
+- They have the same size
+- They contain the same elements (in the same order, if it's a List)
+
+### **Does the Collection interface allow null values?**
+
+Yes, but it depends on the implementation:
+- `ArrayList` and `HashSet` allow null
+- `TreeSet` may throw `NullPointerException` due to sorting logic
+
+### **What does `retainAll()` method do in Collection?**
+
+It retains only the elements that are also present in another collection (intersection).
+
+```java
+collection1.retainAll(collection2);
+```
+
+---
+
+### **Explain the Java ListIterator Interface**
+
+ListIterator Interface is used to traverse the element in a backward and forward direction.
+
+Methods of Java ListIterator Interface:
+
+| Method                | Description                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| void add(E e)         | This method inserts the specified element into the list.                                                             |
+| boolean hasNext()     | This method returns true if the list iterator has more elements while traversing the list in the forward direction.  |
+| E next()              | This method returns the next element in the list and advances the cursor position.                                   |
+| int nextIndex()       | This method returns the index of the element that would be returned by a subsequent call to next()                   |
+| boolean hasPrevious() | This method returns true if this list iterator has more elements while traversing the list in the reverse direction. |
+| E previous()          | This method returns the previous element in the list and moves the cursor position backward.                         |
+| E previousIndex()     | This method returns the index of the element that would be returned by a subsequent call to previous().              |
+| void remove()         | This method removes the last element from the list that was returned by next() or previous() methods                 |
+| void set(E e)         | This method replaces the last element returned by next() or previous() methods with the specified element.           |
+
+### **When to use what?**
+
+![[Pasted image 20240525052708.png]]
+
+![[Pasted image 20240525053052.png]]
