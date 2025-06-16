@@ -37,5 +37,3 @@ Examples include:
 - **Queues** are used for task scheduling.
 - **Graphs** are used in **network routing** and **social media connections**.
 - **Trees** help in organizing hierarchical data like file systems.
-
-Would you like me to expand on any of these with coding examples or deeper explanations? 🚀

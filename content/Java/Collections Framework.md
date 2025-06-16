@@ -10,8 +10,6 @@ Java Collection framework provides many interfaces (Set, List, Queue, Deque) and
 - It represents a set of classes and interfaces.
 - It is optional.
 
-![[Pasted image 20240521054600.png]]
-
 ## Iterator interface
 
 Iterator interface provides the facility of iterating the elements in a forward direction only
