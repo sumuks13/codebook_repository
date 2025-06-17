@@ -2,56 +2,161 @@ tags: [[Java]], [[Collection]]
 
  **Collections framework** provides an architecture to store and manipulate group of objects.
 
-Java Collection framework provides many interfaces (Set, List, Queue, Deque) and classes ([ArrayList](https://www.javatpoint.com/java-arraylist), Vector, [LinkedList](https://www.javatpoint.com/java-linkedlist), [PriorityQueue](https://www.javatpoint.com/java-priorityqueue), HashSet, LinkedHashSet, TreeSet).
+### **How does the Java Collections hierarchy look?**
 
-#### What is a framework in Java
+```
+                Iterable
+                   |
+               Collection
+            /      |      \
+         List     Set     Queue
+                           |
+                         Deque
+```
+
+- `Map` is separate and not part of this hierarchy.
+
+### **What is a framework in Java?**
 
 - It provides readymade architecture.
 - It represents a set of classes and interfaces.
 - It is optional.
 
-## Iterator interface
+### **What is the Collections Framework in Java?**
 
-Iterator interface provides the facility of iterating the elements in a forward direction only
+Java Collections Framework is a **set of classes and interfaces** in the `java.util` package that provides **data structures** and **algorithms** to store, manipulate, and access groups of objects efficiently.
 
-#### Methods of Iterator interface
+### **What are the main benefits of using the Collections Framework?**
 
-There are only three methods in the Iterator interface. They are:
+- Reduces programming effort by using **ready-made data structures**
+- Increases performance with **efficient implementations**
+- Provides **interoperability** between different collection types
+- Offers **algorithms** (like sorting, searching) and **utilities**
 
-|No.|Method|Description|
-|---|---|---|
-|1|public boolean hasNext()|It returns true if the iterator has more elements otherwise it returns false.|
-|2|public Object next()|It returns the element and moves the cursor pointer to the next element.|
-|3|public void remove()|It removes the last elements returned by the iterator. It is less used.|
+### **What is the difference between Collection and Collections?**
 
-## Iterable Interface
+- `Collection`: an interface (root of the hierarchy)
+- `Collections`: a utility class with **static methods** (e.g., `sort()`, `reverse()`, `shuffle()`)
 
-The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
+### **How is Map different from other Collection types?**
 
-It contains only one abstract method. i.e.,
+`Map` is **not a subtype of Collection**.  
+While `Collection` stores **single elements**, `Map` stores **key-value pairs**.
+
+### **What is the role of Iterator in Collections?**
+
+Iterator provides a **unified way to traverse** any collection.  
+- It has methods:
+	- `hasNext()`
+	- `next()`
+	- `remove()`
+
+### **What is Iterable interface in Java?**
+
+- `Iterable` is an **interface** in `java.lang` package.
+- It represents a collection of elements that can be **iterated** (looped) one by one.
+- It has **one method**:
 
 ```java
-Iterator<T> iterator()  
+Iterator<T> iterator();
 ```
 
-It returns the iterator over the elements of type T.
+- All major collection classes like `ArrayList`, `HashSet`, etc., implement `Iterable`.
+- It allows the use of **enhanced for loop** (`for-each`) in Java:
 
-#### Iterating ArrayList using Iterator
-
-```run-java
-import java.util.*;  
-public class ArrayListExample2{  
- public static void main(String args[]){  
-  ArrayList<String> list=new ArrayList<String>();//Creating arraylist  
-  list.add("Mango");//Adding object in arraylist    
-  list.add("Apple");    
-  list.add("Banana");    
-  list.add("Grapes");    
-  //Traversing list through Iterator  
-  Iterator itr=list.iterator();//getting the Iterator  
-  while(itr.hasNext()){//check if iterator has the elements  
-   System.out.println(itr.next());//printing the element and move to next  
-  }  
- }  
-}  
+```java
+List<String> list = List.of("A", "B", "C");
+	for (String s : list) {
+	    System.out.println(s); // works because List implements Iterable
+}
 ```
+
+### **What is Iterator interface in Java?**
+
+- `Iterator` is an **interface** in `java.util` package.
+- It is used to **traverse** or **iterate** over a collection **manually**.
+- It has three main methods:
+
+```java
+boolean hasNext();      // checks if more elements exist
+T next();               // returns the next element
+void remove();          // removes the current element (less used)
+```
+
+Example:
+
+```java
+List<String> names = List.of("Alice", "Bob", "Charlie");
+
+Iterator<String> it = names.iterator();
+
+while (it.hasNext()) {
+    String name = it.next();
+    System.out.println(name);
+}
+```
+
+### **What is the difference Between Iterable and Iterator**
+
+|Feature|Iterable|Iterator|
+|---|---|---|
+|Type|Interface|Interface|
+|Package|`java.lang`|`java.util`|
+|Purpose|Represents a collection that can return an iterator|Used to iterate over elements|
+|Key Method|`iterator()`|`hasNext()`, `next()`, `remove()`|
+|Used In|`for-each` loop|`while` loop with `hasNext()`|
+|Who Implements|`ArrayList`, `HashSet`, etc.|Implemented internally by collections|
+### **What is the difference between Iterator and ListIterator?**
+
+- `Iterator` works for all collections
+- `ListIterator` works only for **List**
+- `ListIterator` supports **bidirectional traversal** and **element modification**
+
+### **What is the purpose of Comparable and Comparator?**
+
+- `Comparable`: natural ordering using `compareTo()` (used in TreeSet, TreeMap)
+- `Comparator`: custom ordering using `compare()` method
+
+### **How do you sort a collection?**
+
+Use `Collections.sort()` for a `List`:
+
+```java
+List<String> list = Arrays.asList("C", "A", "B");
+Collections.sort(list);
+```
+
+For a custom order, use `Comparator`:
+
+```java
+Collections.sort(list, (a, b) -> b.compareTo(a)); // descending
+```
+
+### **What is the difference between fail-fast and fail-safe iterators?**
+
+| Feature  | Fail-Fast                                          | Fail-Safe                                   |
+| -------- | -------------------------------------------------- | ------------------------------------------- |
+| Behavior | Throws `ConcurrentModificationException` on change | Works on a copy, no exception               |
+| Examples | `ArrayList`, `HashSet`                             | `CopyOnWriteArrayList`, `ConcurrentHashMap` |
+
+### **How to make a collection thread-safe?**
+
+- Use **synchronized versions**:  
+    `Collections.synchronizedList(new ArrayList<>())`
+- Use **concurrent classes**:  
+    `ConcurrentHashMap`, `CopyOnWriteArrayList`, etc.
+
+### **What are some utility methods in the Collections class?**
+
+- `sort()`, `reverse()`, `shuffle()`
+- `min()`, `max()`
+- `binarySearch()`
+- `fill()`, `copy()`
+- `synchronizedList()`, `unmodifiableList()`
+
+### **What are some real-world use cases for the Collections Framework?**
+
+- Storing form data or DB rows (List)
+- Caching unique records (Set)
+- Key-based lookup (Map)
+- Message queues or task scheduling (Queue/Deque)
