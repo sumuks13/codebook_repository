@@ -11,7 +11,8 @@ public class HelloWorld {
 
 - [[Fundamentals]] 
 - [[JVM]] 
-- [[FAQ]] 
+- [[Conditional Statements]]
+- [[Control Statements]]
 - [[Variables]] 
 - [[Interpreter and Compiler]] 
 - [[Objects and Classes]] 
