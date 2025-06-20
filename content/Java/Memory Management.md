@@ -1,56 +1,122 @@
 tags: [[Java]], [[Garbage Collection]]
 
-Process of allocation and de-allocation of objects is called Memory management.
-Java does memory management automatically. Java uses an automatic memory management system called a **garbage collector**.
 
 ![[Pasted image 20240419061735.png]]
 
-#### Method Area
+### **What is memory management in Java?**
 
-Method Area is a part of the heap memory which is shared among all the threads. It creates when the JVM starts up. It is used to store class structure, superclass name, interface name, and constructors. The JVM stores the following kinds of information in the method area:
+Memory management in Java refers to how the **Java Virtual Machine (JVM)** allocates and deallocates memory to objects and classes during a program's execution. It ensures that memory is used **efficiently**, and that **unused memory is reclaimed automatically**.
 
-- A Fully qualified name of a type (ex: String)
-- The type's modifiers
-- Type's direct superclass name
-- A structured list of the fully qualified names of super interfaces.
+### **How is memory managed in Java?**
 
-#### Heap Area
+Java uses a **managed memory model**, which means:
 
-Heap stores the actual objects. It creates when the JVM starts up. The user can control the heap if needed. It can be of fixed or dynamic size. When you use a new keyword, the JVM creates an instance for the object in a heap. While the reference of that object stores in the stack. There exists only one heap for each running JVM process. When heap becomes full, the garbage is collected.
+- The **JVM** takes care of memory allocation
+- **Garbage Collector (GC)** reclaims unused memory
+- Developers focus on logic — no need for manual memory deallocation like in C/C++
 
-Heap is divided into the following parts:
-- Young generation
-- Survivor space
-- Old generation
-- Permanent generation
-- Code Cache
+### **What are the main areas of memory in the JVM?**
 
-Reference Types of Objects on Heap:
-- **Strong reference:** It is very simple as we use it in our daily programming. Any object which has Strong reference attached to it is not eligible for garbage collection. We can create a strong reference by using new keyword.
-- **Weak Reference:** It does not survive after the next garbage collection process. It is defined in **java.lang.ref.WeakReference** class.
-- **Soft Reference:** It is collected when the application is running low on memory.
-- **Phantom Reference:** The object which has only phantom reference pointing them can be collected whenever garbage collector wants to collect. 
+| Memory Area                       | Purpose                                              |
+| --------------------------------- | ---------------------------------------------------- |
+| **Heap**                          | Stores all objects and class instances               |
+| **Stack**                         | Stores method calls, local variables, and references |
+| **Method Area**                   | Stores class metadata, static variables, bytecode    |
+| **Program Counter (PC) Register** | Holds the address of the current instruction         |
+| **Native Method Stack**           | For native (non-Java) method calls                   |
+
+### **What is the Java Heap memory?**
+
+- Heap is the **runtime data area** from which memory for all Java class instances and arrays is allocated. 
+- It is **shared among all threads**. 
+- When you use a new keyword, the JVM creates an instance for the object in a heap. 
+- While the reference of that object stores in the stack. 
+- There exists only one heap for each running JVM process. 
+- When heap becomes full, the garbage is collected.
+
+
+### **What is the Stack memory in Java?**
+
+Each thread gets its own **stack memory**, which stores:
+- Local variables
+- Method call frames
+- References to objects in the heap
+
+Stack memory is **faster** and **automatically cleaned** up when a method finishes.
+
+### **What is the Method Area (MetaSpace)?**
+
+- Used to store **class-level data**, like static variables, constants, and method metadata.
+- In Java 8 and above, this is called **Metaspace** (replaces PermGen).
+- It grows **dynamically** and is **not part of the heap**.
+
+### **What is the Program Counter (PC) Register?**
+
+Each thread has its own PC register which:
+- Points to the **current executing instruction** in the method
+- Is used to **restore execution** after method calls and returns
+
+### **What is the Native Method Stack?**
+
+It is also known as C stack. It is a stack for native code written in a language other than Java. Java Native Interface (JNI) calls the native stack. The performance of the native stack depends on the OS.
+
+### **What are the different reference types for objects in Heap memory?**
+
+1. Strong reference (we can create a strong reference by using new keyword).
+2. Weak Reference
+3. Soft Reference
+4. Phantom Reference
 
 ```java
 PhantomReference<StringBuilder> reference = new PhantomReference<>(new StringBuilder());
 ```
 
-#### Stack Area
+### **Explain about the Stack Frame**
 
-Stack Area generates when a thread creates. It can be of either fixed or dynamic size. The stack memory is allocated per thread. It is used to store data and partial results. It contains references to heap objects. It also holds the value itself rather than a reference to an object from the heap. The variables which are stored in the stack have certain visibility, called scope.
-
-**Stack Frame:** Stack frame is a data structure that contains the thread's data. Thread data represents the state of the thread in the current method.
+Stack frame is a data structure that contains the thread's data. Thread data represents the state of the thread in the current method.
 
 - When a method invokes, a new frame creates. It destroys the frame when the invocation of the method completes.
-- Each frame contains own Local Variable Array (LVA), Operand Stack (OS), and Frame Data (FD).
-- Only one frame (the frame for executing method) is active at any point in a given thread of control. This frame is called the current frame, and its method is known as the current method. The class of method is called the current class.
+- Each frame contains own **Local Variable Array (LVA), Operand Stack (OS) and Frame Data (FD)**.
+- Only one frame is active at any point in a given thread of control. This frame is called the current frame, and its method is known as the current method. The class of method is called the current class.
 - The frame stops the current method, if its method invokes another method or if the method completes.
 - The frame created by a thread is local to that thread and cannot be referenced by any other thread.
 
-#### Native Method Stack
+### **What causes `OutOfMemoryError` in Java?**
 
-It is also known as C stack. It is a stack for native code written in a language other than Java. Java Native Interface (JNI) calls the native stack. The performance of the native stack depends on the OS.
+Common reasons:
+- Heap is full and GC cannot free enough memory
+- Creating too many objects without releasing references
+- Infinite recursion or very deep call stack (causes `StackOverflowError`)
 
-#### PC Registers
+### **What are the types of memory errors in Java?**
 
-Each thread has a Program Counter (PC) register associated with it. PC register stores the return address or a native pointer. It also contains the address of the JVM instructions currently being executed.
+|Error Type|Cause|
+|---|---|
+|`OutOfMemoryError`|Heap, Metaspace, or other memory is full|
+|`StackOverflowError`|Method calls exceed the stack limit|
+|`GC overhead limit`|Too much time spent on GC with little gain|
+
+### **What is memory fragmentation?**
+
+Memory fragmentation happens when **free memory is scattered** in small blocks.  
+This can make it hard to allocate large objects even though there’s enough total free space.
+
+Modern collectors like **G1 GC** handle fragmentation better by organizing memory into regions.
+
+### **How do local variables and object references work in memory?**
+
+- **Local variables** are stored in the **stack**
+- If a local variable refers to an object, the **reference** is in the stack, but the **actual object is in the heap**        
+
+### **Can objects be shared between threads? Where are they stored?**
+
+Yes. **Objects are stored in heap**, which is **shared by all threads**.  
+But local variables (in stack) are **thread-specific** and not shared.
+
+### **What is escape analysis in Java?**
+
+It’s a compiler optimization that determines **if an object is used only in a method**, and if so, the JVM may **allocate it on the stack instead of the heap** — making allocation faster and removing the need for GC.
+
+### **What happens if a variable is declared but not used?**
+
+It may still consume stack memory **until the method finishes**, but it can be **optimized out by the JVM** if not referenced.
