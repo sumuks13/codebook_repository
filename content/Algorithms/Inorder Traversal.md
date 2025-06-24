@@ -2,8 +2,8 @@ tags: [[Algorithms]], [[Depth First Search]]
 
 ### **Algorithm**
 
-- Visit **parent node first**, then recursively visit **left subtree**, then **right subtree**.
-- (Root → Left → Right)
+- Recursively visit **left subtree**, then **parent node**, then **right subtree**.
+- (Left → Root → Right)
 
 |                      | **Complexity** | **Explanation**                                   |
 | -------------------- | -------------- | ------------------------------------------------- |
@@ -13,24 +13,24 @@ tags: [[Algorithms]], [[Depth First Search]]
 ```run-java
 import java.util.*;
 public class Solution {
-	public void preorder(TreeNode root) {
-	    if (root == null)
+	public void inorder(TreeNode root) {
+	    if (root == null) 
 		    return;
 
+	    inorder(root.left);
 	    System.out.print(root.val + " ");
-	    preorder(root.left);
-	    preorder(root.right);
+	    inorder(root.right);
 	}
     
     public static void main(String[] args) {
 
-		TreeNode root = new TreeNode(1);
-		root.left = new TreeNode(2);
-		root.right = new TreeNode(3);
-		root.right.left = new TreeNode(4);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+	    root.right = new TreeNode(3);
+	    root.right.left = new TreeNode(4);
 	            
 		Solution sol = new Solution();
-        sol.preorder(root);
+        sol.inorder(root);
     }
 }
 
