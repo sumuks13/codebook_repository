@@ -10,7 +10,7 @@ tags: [[Algorithms]], [[Depth First Search]]
 | **Time Complexity**  | O(n)           | Every node is visited exactly once                |
 | **Space Complexity** | O(h)           | `h` = height of the tree (due to recursion stack) |
 
-```run-java
+```java
 import java.util.*;
 public class Solution {
 	public void inorder(TreeNode root) {
