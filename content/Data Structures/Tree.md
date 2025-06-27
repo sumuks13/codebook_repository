@@ -1,5 +1,5 @@
 Tags: [[Data Structures]]
-#### **1. What is a Tree Data Structure? Explain its Properties.**
+### **What is a Tree Data Structure? Explain its Properties.**
 
 A **tree** is a hierarchical data structure consisting of **nodes** connected by **edges**. It starts with a **root node** and branches out into child nodes.  
 **Properties:**
@@ -9,7 +9,7 @@ A **tree** is a hierarchical data structure consisting of **nodes** connected by
 - **Leaf Nodes:** Nodes with no children.
 - **Depth:** Distance from the root.
 - **Height:** Maximum depth of any node.
-#### **2. What are the Different Types of Trees?**
+### **What are the Different Types of Trees?**
 
 - **Binary Tree:** Each node has at most **two children**.
 - **Binary Search Tree (BST):** Left child < Root < Right child.
@@ -18,7 +18,7 @@ A **tree** is a hierarchical data structure consisting of **nodes** connected by
 - **Trie:** Used for word searches.
 - **B-Tree:** Used in databases.
 
-#### **3. How Do You Represent a Tree in Programming?**
+### **How Do You Represent a Tree in Programming?**
 
 ```java
 class Node {
@@ -31,17 +31,17 @@ class Node {
 }
 ```
  
-#### **4. Difference Between Binary Tree & General Tree?**
+### **Difference Between Binary Tree & General Tree?**
 
 - **Binary Tree:** Each node has **at most two children**.
 - **General Tree:** Each node can have **multiple children**.
 
-#### **5. Types of Tree Traversals?**
+### **Types of Tree Traversals?**
 
 - **DFS Traversals:** Preorder, Inorder, Postorder.
 - **BFS Traversal:** Level-order traversal.
 
-#### **6. Explain DFS (Depth-First Search).**
+### **Explain DFS (Depth-First Search).**
 
 DFS explores **deep into one branch** before backtracking.  
 **Types of DFS Traversals:**
@@ -50,11 +50,11 @@ DFS explores **deep into one branch** before backtracking.
 - **Inorder (Left → Root → Right)**
 - **Postorder (Left → Right → Root)**
 
-#### **7. Explain BFS (Breadth-First Search).**
+### **Explain BFS (Breadth-First Search).**
 
 BFS explores **level by level**, visiting all nodes at a given depth before moving deeper.
 
-#### **8. Differences Between Preorder, Inorder & Postorder Traversal (With Code).**
+### **Differences Between Preorder, Inorder & Postorder Traversal (With Code).**
 
 ```java
 void inorder(Node root) {
@@ -86,22 +86,22 @@ void postorder(Node root) {
 }
 ```
 
-#### **9. What is the Height & Depth of a Tree?**
+### **What is the Height & Depth of a Tree?**
 
 - **Height:** Distance from root to the deepest leaf.
 - **Depth:** Distance from a node to the root.
 
-#### **10. What is a Balanced Tree? Why is it Important?**
+### **What is a Balanced Tree? Why is it Important?**
 
 A tree where height difference between left and right subtrees is **≤ 1**.  
 **Importance:** Ensures efficient operations.
 
-#### **11. Complete Tree vs. Full Tree?**
+### **Complete Tree vs. Full Tree?**
 
 - **Complete Tree:** All levels are filled **except possibly the last**.
 - **Full Tree:** Every node has **either 0 or 2 children**.
 
-#### **12. Applications of Trees in Real-World Scenarios?**
+### **Applications of Trees in Real-World Scenarios?**
 
 - **File Systems**
 - **Databases**
@@ -109,7 +109,24 @@ A tree where height difference between left and right subtrees is **≤ 1**.
 - **Network Routing**
 - **Expression Evaluation**
 
-#### **13. How Do You Check if Two Trees are Identical?**
+### **Calculate Max Depth of a Binary Tree**
+
+To calculate max depth of a binary tree, 
+1. Check the max between depth of left node and depth of right node.
+2. Add 1 to include the current node.
+
+Max depth = max(left subtree depth, right subtree depth) + 1
+
+```java
+public int maxDepth(TreeNode root) {
+        if(root == null)
+            return 0;
+
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+```
+
+### **How Do You Check if Two Trees are Identical?**
 
 ```java
 boolean isIdentical(Node a, Node b) {
@@ -119,7 +136,7 @@ boolean isIdentical(Node a, Node b) {
 }
 ```
 
-#### **14. Lowest Common Ancestor (LCA) of Two Nodes?**
+### **Lowest Common Ancestor (LCA) of Two Nodes?**
 
 ```java
 Node lca(Node root, int n1, int n2) {
@@ -131,7 +148,7 @@ Node lca(Node root, int n1, int n2) {
 }
 ```
 
-#### **15. Diameter of a Tree (Longest Path Between Two Nodes)?**
+### **Diameter of a Tree (Longest Path Between Two Nodes)?**
 
 ```java
 int diameter(Node root) {
@@ -144,7 +161,7 @@ int diameter(Node root) {
 }
 ```
 
-#### **16. Check if a Tree is Symmetric?**
+### **Check if a Tree is Symmetric?**
 
 ```java
 boolean isSymmetric(Node root) {
@@ -158,11 +175,11 @@ boolean isMirror(Node t1, Node t2) {
 }
 ```
 
-#### **17. Construct a Tree from Inorder & Preorder/Postorder Traversals?**
+### **Construct a Tree from Inorder & Preorder/Postorder Traversals?**
 
 Recursively identify **root** and divide into **left and right subtrees**.
 
-#### **18. Serialize & Deserialize a Tree?**
+### **Serialize & Deserialize a Tree?**
 
 ```java
 String serialize(Node root) {
