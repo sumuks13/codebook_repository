@@ -120,3 +120,14 @@ It’s a compiler optimization that determines **if an object is used only in a 
 ### **What happens if a variable is declared but not used?**
 
 It may still consume stack memory **until the method finishes**, but it can be **optimized out by the JVM** if not referenced.
+
+### **Why there are no pointers in Java?**
+
+- Java has references instead of pointers. 
+- These references point to objects in memory. But there is no direct access to these memory locations. JVM is free to move the objects within VM memory. 
+- The absence of pointers helps Java in managing memory and garbage collection effectively. Also it provides developers with convenience of not getting worried about memory allocation and de allocation.
+
+### **If there are no pointers in Java, then why do we get NullPointerException?**
+
+JVM uses pointers but programmers only see object references.
+if an object reference points to null object, and we try to access a method or member variable on it, then we get NullPointerException.

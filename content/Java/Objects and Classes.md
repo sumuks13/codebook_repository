@@ -47,3 +47,10 @@ If you have to use an object only once, an anonymous object is a good approach. 
 
 new Calculation().fact(); //anonymous object  
 
+### **What is the meaning of object cloning in Java?**
+
+- Object.clone() method is used for creating an exact copy of the object in Java. 
+- It acts like a copy constructor. It creates and returns a copy of the object, with the same class and with all the fields having same values as of the original object. 
+- One disadvantage of cloning is that the return type is an Object. It has to be explicitly cast to actual type.
+
+
