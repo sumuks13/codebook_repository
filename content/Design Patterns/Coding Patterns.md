@@ -7,9 +7,12 @@
 - You’re comparing elements from **two places** (beginning & end, or two sequences).
 - You’re told to **find pairs** or triplets.
 - Problem involves sorted data or **linked list**.
+- Problem involves reversing a given string or list or array.
+- Palindrome checks
 
 **Problems:**
 - [1768. Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/)
+- [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
 
 ---
 ### **String: Unequal length handling between two strings**
