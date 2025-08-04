@@ -104,3 +104,44 @@ docker run -v /my/local/path:/container/path myapp
 ```bash
 docker logs <container_id_or_name>
 ```
+
+### **What is a Dockerfile?**
+
+A **Dockerfile** is a **text file** that contains **a set of instructions** to build a **Docker image**.
+
+A **Dockerfile** is a **text file** that contains **a set of instructions** to build a **Docker image** — which is basically a packaged environment with everything your application needs to run: code, libraries, dependencies, configurations.
+
+Example: Simple Spring Boot App Dockerfile
+
+```dockerfile
+# Use base image with JDK
+FROM eclipse-temurin:17-jdk-alpine
+
+# Copy your jar file into the container
+COPY target/my-app.jar app.jar
+
+# Expose port (optional)
+EXPOSE 8080
+
+# Run the app
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
+
+### **What are some of the common Dockerfile commands?**
+
+|Command|Purpose|
+|---|---|
+|`FROM`|**Base image** to start with (e.g., Java, Python, Alpine Linux)|
+|`COPY`|Copy files from host machine into image|
+|`ADD`|Like `COPY` but supports remote URLs and archive extraction|
+|`RUN`|Run shell commands (e.g., install packages) during build|
+|`CMD`|Default command to run when container starts|
+|`ENTRYPOINT`|Like CMD but more strict — can’t be overridden easily|
+|`WORKDIR`|Set working directory inside container|
+|`EXPOSE`|Document which port the container listens on|
+|`ENV`|Set environment variables|
+|`ARG`|Define build-time variables|
+|`VOLUME`|Declare mount point for volumes|
+|`LABEL`|Metadata for the image (like version, maintainer info)|
+|`USER`|Switch to a different user inside the container|
+|`HEALTHCHECK`|Define how to check if container is healthy|
