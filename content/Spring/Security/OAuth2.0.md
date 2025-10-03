@@ -60,7 +60,7 @@ tags: [[Spring Security]], [[OIDC]]
     - Receive tokens as usual.
 - **Security notes:** Thwarts code interception/replay; always use `S256` over `plain`; still use `state` and HTTPS.
 
-![[Pasted image 20251002210013.png]]
+![[Pasted image 20251003211728.png]]
 
 #### **Explain Client Credentials Flow
 
@@ -100,7 +100,7 @@ tags: [[Spring Security]], [[OIDC]]
 
 ![[Pasted image 20251002211627.png]]
 
-#### **Explain Resource owner password credentials (ROPC)
+#### **Explain Resource owner password credentials (ROPC)**
 
 - **Definition:** A legacy flow where the user’s username and password are sent directly to the client to obtain tokens.
 - **When to use:** Avoid in modern systems; only for tightly controlled, trusted legacy environments with no viable alternative.
