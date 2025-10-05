@@ -114,7 +114,34 @@ tags: [[Spring Security]], [[OIDC]]
 
 #### **What are the common parameters and headers used across flows?**
 
-- **Authorize request:** `response_type`, `client_id`, `redirect_uri`, `scope`, `state`, `code_challenge`, `code_challenge_method`.
-- **Token request:** `grant_type`, `code`, `redirect_uri`, `client_id`/client auth, `code_verifier`, `device_code`, `username`/`password` (ROPC).
-- **HTTP header:** `Authorization: Bearer <access_token>` for resource calls.
-- **Token response fields:** `access_token`, `token_type`, `expires_in`, `refresh_token` (optional), `id_token` (OIDC).
+**Authorize Request Parameters**: These are sent when the client first asks the authorization server for permission.
+
+- **`response_type`**: Tells the server what kind of response the client expects (e.g., `code`, `token`, `id_token`). Prevents ambiguity.
+- **`client_id`**: Identifies which app is making the request. Ensures the server knows who’s asking.
+- **`redirect_uri`**: The URL where the authorization server should send the user (and authorization code) back. Prevents code interception by ensuring it matches a pre-registered URI.
+- **`scope`**: Defines what access the app is requesting (e.g., profile, email). Helps enforce least-privilege access.
+- **`state`**: A random string the client generates to prevent CSRF attacks. The server echoes it back, so the client can verify the request wasn’t tampered with.
+- **`code_challenge`**: Part of PKCE (Proof Key for Code Exchange). A hashed value derived from a secret (`code_verifier`) that will be checked later. Protects against authorization code interception.
+- **`code_challenge_method`**: Specifies how the `code_challenge` was generated (e.g., `S256` for SHA-256). Ensures both client and server use the same hashing method.
+
+**Token Request Parameters**: These are sent when the client exchanges the authorization code for tokens.
+
+- **`grant_type`**: Tells the server which OAuth flow is being used (`authorization_code`, `refresh_token`, `password`, `client_credentials`, etc.).
+- **`code`**: The authorization code received earlier. Proves the client got user consent.
+- **`redirect_uri`**: Must match the one used in the authorize request. Prevents code injection attacks.
+- **`client_id` / client authentication**: Identifies and authenticates the client. Prevents rogue apps from impersonating legitimate ones.
+- **`code_verifier`**: The original secret string used to generate the `code_challenge`. The server checks it against the stored challenge to confirm authenticity (PKCE).
+- **`device_code`**: Used in device flows (e.g., smart TVs). Links the device to the user’s authorization.
+- **`username` / `password`** (ROPC flow): Used only in the Resource Owner Password Credentials flow (not recommended anymore). Lets the client directly exchange user credentials for a token.
+
+**HTTP Header**:
+
+ - **`Authorization: Bearer <access_token>`**: Standard way to present the access token when calling APIs. The resource server validates the token before granting access. Keeps tokens out of query strings (which are less secure).
+
+**Token Response Fields**: These are returned by the authorization server after a successful token request.
+
+- **`access_token`**: The actual credential used to access protected resources.
+- **`token_type`**: Usually `Bearer`, meaning the token itself is enough to prove authorization.
+- **`expires_in`**: Lifetime of the access token in seconds. Encourages short-lived tokens for security.
+- **`refresh_token`** (optional): Lets the client get a new access token without re-prompting the user. Reduces friction while maintaining security.
+- **`id_token`** (OIDC only): A JWT that contains identity claims about the user (e.g., name, email). Used for authentication, not just authorization.
