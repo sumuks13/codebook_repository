@@ -1,4 +1,4 @@
-Tags: [[Data Structures]]
+Tags: [[Data Structures/Data Structures]]
 ### **What is a Tree Data Structure? Explain its Properties.**
 
 A **tree** is a hierarchical data structure consisting of **nodes** connected by **edges**. It starts with a **root node** and branches out into child nodes.  
@@ -43,28 +43,10 @@ class Node {
 
 ### **Explain DFS (Depth-First Search).**
 
-DFS explores **deep into one branch** before backtracking.  
+DFS explores **deep into one branch** before backtracking. 
 **Types of DFS Traversals:**
 
 - **Preorder (Root → Left → Right)**
-- **Inorder (Left → Root → Right)**
-- **Postorder (Left → Right → Root)**
-
-### **Explain BFS (Breadth-First Search).**
-
-BFS explores **level by level**, visiting all nodes at a given depth before moving deeper.
-
-### **Differences Between Preorder, Inorder & Postorder Traversal (With Code).**
-
-```java
-void inorder(Node root) {
-    if (root != null) {
-        inorder(root.left);
-        System.out.print(root.data + " ");
-        inorder(root.right);
-    }
-}
-```
 
 ```java
 void preorder(Node root) {
@@ -76,12 +58,52 @@ void preorder(Node root) {
 }
 ```
 
+- **Inorder (Left → Root → Right)**
+
+```java
+void inorder(Node root) {
+    if (root != null) {
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+}
+```
+
+- **Postorder (Left → Right → Root)**
+
 ```java
 void postorder(Node root) {
     if (root != null) {
         postorder(root.left);
         postorder(root.right);
         System.out.print(root.data + " ");
+    }
+}
+```
+
+### **Explain BFS (Breadth-First Search).**
+
+BFS explores **level by level**, visiting all nodes at a given depth before moving deeper. Level order traversal is done with the help of Queue.
+
+```java
+void levelOrder(TreeNode root) {
+    Queue<TreeNode> queue = new LinkedList<>();
+                
+    if(root == null) return;
+    queue.add(root);
+
+    while(!queue.isEmpty()){
+	    int currentLevel = queue.size();
+
+        for(int i=0; i<currentLevel; i++){
+            TreeNode cur = queue.remove();
+                
+            if(cur.left != null) queue.add(cur.left);
+            if(cur.right != null) queue.add(cur.right);
+            
+	        System.out.print(cur.data + " ");
+        }
     }
 }
 ```
@@ -142,9 +164,12 @@ boolean isIdentical(Node a, Node b) {
 Node lca(Node root, int n1, int n2) {
     if (root == null) return null;
     if (root.data == n1 || root.data == n2) return root;
+    
     Node left = lca(root.left, n1, n2);
     Node right = lca(root.right, n1, n2);
-    return (left != null && right != null) ? root : (left != null ? left : right);
+    
+    if (left != null && right != null) return root;
+    return (left != null) ? left : right;
 }
 ```
 
