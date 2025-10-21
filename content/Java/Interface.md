@@ -1,4 +1,4 @@
-tags : [[Java/Java]]
+tags : [[Java]]
 
 An **interface in Java** is a blueprint of a class. It has static constants and abstract methods.
 There can be only abstract methods in the Java interface, not method body. It is used to achieve abstraction and multiple [inheritance in Java](https://www.javatpoint.com/inheritance-in-java).
@@ -13,7 +13,7 @@ Interface fields are public, static and final by default, and the methods are pu
 
 ![interface in java](https://static.javatpoint.com/images/interface.png)
 
-![[attachments/Pasted image 20240416091331.png]]
+![[Pasted image 20240416091331.png]]
 
 
 #### Multiple inheritance in Java by interface

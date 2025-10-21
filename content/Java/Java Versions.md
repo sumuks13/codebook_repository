@@ -1,4 +1,4 @@
-tags: [[Java/Java]], [[Java 8]], [[Java Features]]
+tags: [[Java]], [[Java 8]], [[Java Features]]
 
 # Java 4
 
@@ -28,10 +28,10 @@ tags: [[Java/Java]], [[Java 8]], [[Java Features]]
 # Java 8
 
 - [Java 8 Date/Time API (Java 8)](https://www.javatpoint.com/java-date)
-- [[Java/Lambda Expressions]]
+- [[Lambda Expressions]]
 - [Method References (Java 8)](https://www.javatpoint.com/java-8-method-reference)
 - [[Functional Interfaces]]
-- [[Java/Streams]]
+- [[Streams]]
 - [Base64 Encode Decode (Java 8)](https://www.javatpoint.com/java-base64-encode-decode)
 - [Default Methods (Java 8)](https://www.javatpoint.com/java-default-methods)
 - [forEach method(Java 8)](https://www.javatpoint.com/java-8-foreach)

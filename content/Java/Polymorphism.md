@@ -1,4 +1,4 @@
-tags: [[Java/OOPS]]
+tags: [[OOPS]]
 
 ### 1. What is Runtime Polymorphism?
 

@@ -1,4 +1,4 @@
-tags : [[Java/Java]], [[Java/Thread]], [[Java/Runnable]]
+tags : [[Java]], [[Thread]], [[Runnable]]
 
 Multithreading is a process of executing multiple threads simultaneously.
 
@@ -7,7 +7,7 @@ Multithreading is a process of executing multiple threads simultaneously.
 A thread is a lightweight subprocess, the smallest unit of processing. It is a separate path of execution.
 Threads are independent. If there occurs exception in one thread, it doesn't affect other threads. It uses a shared memory area.
 
-![[attachments/Pasted image 20240504180632.png]]
+![[Pasted image 20240504180632.png]]
 As shown in the above figure, a thread is executed inside the process. There is context-switching between the threads. There can be multiple processes inside the OS, and one process can have multiple threads.
 
 #### Advantages of Java Multithreading
@@ -75,7 +75,7 @@ If there are a lot of threads in the waiting or blocked state, then it is the du
 - **Abnormal termination:** It occurs when some unusual events such as an unhandled exception or segmentation fault.
 
 
-![[attachments/Pasted image 20240504183929.png]]
+![[Pasted image 20240504183929.png]]
 
 In Java, one can get the current state of a thread using the **Thread.getState()** method. The **java.lang.Thread.State** class of Java provides the [[Enumeration]] constants to represent the state of a thread.
 
@@ -83,8 +83,8 @@ In Java, one can get the current state of a thread using the **Thread.getState(
 
 There are two ways to create a thread:
 
-1. By extending [[Java/Thread]] class
-2. By implementing [[Java/Runnable]] interface.
+1. By extending [[Thread]] class
+2. By implementing [[Runnable]] interface.
 
 If you are not extending the Thread class, your class object would not be treated as a thread object. So you need to explicitly create the Thread class object. 
 
@@ -92,7 +92,7 @@ Or pass the object of your class that implements Runnable to a thread constructo
 
 ## How to perform single task by multiple threads in Java?
 
-If you have to perform a single task by many threads, have only one run() method. Use notify and [[Java/Synchronization]]
+If you have to perform a single task by many threads, have only one run() method. Use notify and [[Synchronization]]
 
 ## How to perform multiple tasks by multiple threads (multitasking in multithreading)?
 

@@ -1,4 +1,4 @@
-tags: [[Algorithms/Algorithms]]
+tags: [[Algorithms]]
 
 https://stackoverflow.com/questions/62082297/how-to-determine-the-kth-character-in-the-concatenated-string
 

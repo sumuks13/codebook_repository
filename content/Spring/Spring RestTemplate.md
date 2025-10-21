@@ -1,4 +1,4 @@
-tags : [[Spring/Spring Boot]], [[Spring/Spring WebClient]]
+tags : [[Spring Boot]], [[Spring WebClient]]
 
 Spring RestTemplate is a Spring Framework class for making HTTP requests to external services or APIs.
 
@@ -36,7 +36,7 @@ if (response.getStatusCode().is2xxSuccessful()) {
 > 
 > Consequently, the application will create many threads, which will exhaust the thread pool or occupy all the available memory.
 > 
-> [[Spring/Spring WebClient]] uses an asynchronous, non-blocking solution provided by the Spring Reactive framework.
+> [[Spring WebClient]] uses an asynchronous, non-blocking solution provided by the Spring Reactive framework.
 
 
 

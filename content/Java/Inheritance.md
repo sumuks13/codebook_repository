@@ -1,4 +1,4 @@
-tags: [[Java/OOPS]]
+tags: [[OOPS]]
 
 ### **Explain the concept of Inheritance**
 

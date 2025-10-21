@@ -1,8 +1,8 @@
-tags : [[Java/Java]], [[Java/Collections Framework]], [[Java/List]], [[Java/Set]], [[Java/Queue]], [[Java/Map]]
+tags : [[Java]], [[Collections Framework]], [[List]], [[Set]], [[Queue]], [[Map]]
 
 A Collection means a group of objects. 
 
-![[Pasted image 20240521054600.png \| center ]]
+![[Pasted image 20240521054600.png | center | 600]]
 
 ### **Lists**
 
@@ -169,6 +169,6 @@ Methods of Java ListIterator Interface:
 
 ### **When to use what?**
 
-![[attachments/Pasted image 20240525052708.png]]
+![[Pasted image 20240525052708.png]]
 
-![[attachments/Pasted image 20240525053052.png]]
+![[Pasted image 20240525053052.png]]

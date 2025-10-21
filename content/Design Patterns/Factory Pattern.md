@@ -3,7 +3,7 @@ tags: [[Design Patterns]], [[Creational Design Patterns]]
 ### **What is the Factory Pattern?**
 
 - The **Factory Pattern** is a **creational design pattern** that provides an interface for creating objects but **lets subclasses decide** which class to instantiate.
-- The Factory pattern creates objects without exposing the creation logic. There will be a common interface through which the newly created object is referenced - [[Java/Polymorphism]].
+- The Factory pattern creates objects without exposing the creation logic. There will be a common interface through which the newly created object is referenced - [[Polymorphism]].
 
 ### **When to use it?**
 

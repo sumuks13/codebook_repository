@@ -1,4 +1,4 @@
-tags : [[Algorithms/Algorithms]]
+tags : [[Algorithms]]
 
 ```java
 class GFG {

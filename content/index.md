@@ -1,14 +1,13 @@
 ---
-{"publish":true,"title":"CodeBook","created":"2025-10-05T21:14:02.866+05:30","modified":"2025-10-11T18:52:54.316+05:30","cssclasses":""}
+title: CodeBook
 ---
-
 A curated collection of programming concepts for quick access and future reference.
 
 ## **Concepts**
 
 ### **DSA**
-- 🧠 [[Algorithms/Algorithms]]: Fundamental algorithms for problem-solving and optimization.
-- 🔢 [[Data Structures/Data Structures]]: Key data structures like arrays, linked lists, trees, and graphs.
+- 🧠 [[Algorithms]]: Fundamental algorithms for problem-solving and optimization.
+- 🔢 [[Data Structures]]: Key data structures like arrays, linked lists, trees, and graphs.
 - ⚙️ [[Design Patterns]]: Reusable solutions to common software design problems.
 
 ### **Front-end**
@@ -18,7 +17,7 @@ A curated collection of programming concepts for quick access and future referen
 - ⚛️ [[React]]: A JavaScript library for building user interfaces, especially single-page apps.
 
 ### **Back-end**
-- 🍵 [[Java/Java]]: A widely-used programming language for building server-side applications.
+- 🍵 [[Java]]: A widely-used programming language for building server-side applications.
 - 🍃 [[Spring]]: A framework for building Java-based enterprise applications, especially web apps.
 
 ### **Database**

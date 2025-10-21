@@ -1,4 +1,4 @@
-tags : [[Spring/Spring Boot]]
+tags : [[Spring Boot]]
 
 The `@Entity` and `@Table` annotations are used to define and map Java classes to database tables. Here's the difference between the `@Entity` and `@Table` annotations:
 

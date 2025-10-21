@@ -1,6 +1,6 @@
-tags : [[Algorithms/Algorithms]]
+tags : [[Algorithms]]
 
-![[attachments/Pasted image 20240602194636.png]]
+![[Pasted image 20240602194636.png]]
 
 **Inorder** : left, parent, right -> left to right
 **Preorder**: parent, left, right

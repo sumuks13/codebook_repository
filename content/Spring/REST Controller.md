@@ -1,4 +1,4 @@
-tags : [[Spring/Spring Boot]]
+tags : [[Spring Boot]]
 
 The `@Controller` annotation is a specialization of the `@Component` annotation.
 The handler methods in these classes return a view name, which is resolved to a view technology file (like JSP or Thymeleaf) by a view resolver.

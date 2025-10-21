@@ -1,4 +1,4 @@
-tags : [[Java/Java]], [[Java/Inheritance]], [[Java/Polymorphism]], [[Java/Abstraction]], [[Encapsulation]]
+tags : [[Java]], [[Inheritance]], [[Polymorphism]], [[Abstraction]], [[Encapsulation]]
 
 The full form of OOPS is Object-Oriented Programming System. 
 

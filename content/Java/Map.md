@@ -1,4 +1,4 @@
-tags: [[Java/Collection]], [[Data Structures/Data Structures]], [[Java/Hashing]]
+tags: [[Collection]], [[Data Structures]], [[Hashing]]
 
 ### **What is the Map interface in Java?**
 

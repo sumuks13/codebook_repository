@@ -1,4 +1,4 @@
-tags : [[Spring/Spring Boot]]
+tags : [[Spring Boot]]
 
 While the previous solution provides a detailed approach to achieve multi-tenancy with multiple data sources in Spring Boot, there are alternative approaches that can simplify the configuration. One such approach is using the `AbstractRoutingDataSource` class provided by Spring Framework.
 

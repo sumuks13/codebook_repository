@@ -1,8 +1,8 @@
-tags: [[Java/Java]]
+tags: [[Java]]
 
 It contains classloader, memory area, execution engine etc.
 
-![[attachments/Pasted image 20240414195225.png]]
+![[Pasted image 20240414195225.png]]
 
 ## Classloader
 

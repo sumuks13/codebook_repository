@@ -1,8 +1,8 @@
-tags : [[Algorithms/Algorithms]], [[Java/Collection]]
+tags : [[Algorithms]], [[Collection]]
 
 ## What is Hashing
 
-![[Pasted image 20240525055057.png \| right]]It is the process of converting an object into an integer value. The integer value helps in indexing and faster searches.
+![[Pasted image 20240525055057.png | right]]It is the process of converting an object into an integer value. The integer value helps in indexing and faster searches.
 
 HashMap contains an array of the nodes, and the node is represented as a class. It uses an array and LinkedList data structure internally for storing Key and Value. There are four fields in HashM
 
@@ -16,7 +16,7 @@ HashMap contains an array of the nodes, and the node is represented as a class. 
 
 Array of the node is called buckets. Each node has a data structure like a LinkedList. More than one node can share the same bucket.
 
-![[Pasted image 20240525055303.png \| 500]]
+![[Pasted image 20240525055303.png | 500]]
 
 #### Example
 

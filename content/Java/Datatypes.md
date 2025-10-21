@@ -1,4 +1,4 @@
-tags : [[Java/Java]]
+tags : [[Java]]
 
 ### **What are data types in Java?**
 

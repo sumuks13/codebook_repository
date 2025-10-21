@@ -1,7 +1,7 @@
-tags: [[Java/Java]], [[Java/Garbage Collection]]
+tags: [[Java]], [[Garbage Collection]]
 
 
-![[attachments/Pasted image 20240419061735.png]]
+![[Pasted image 20240419061735.png]]
 
 ### **What is memory management in Java?**
 
