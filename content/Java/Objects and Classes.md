@@ -2,7 +2,7 @@ An object is an instance of a class. A class is a template or blueprint from whi
 
 An object in Java is the physical as well as a logical entity, whereas, a class in Java is a logical entity only.
 
-![[Pasted image 20240415085227.png]]
+![[attachments/Pasted image 20240415085227.png]]
 
 class in Java can contain:
 	Fields
@@ -34,10 +34,10 @@ By constructor
 constructor is called "Default Constructor" when it doesn't have any parameter
 constructor which has a specific number of parameters is called a parameterized constructor.
 
-![[Pasted image 20240415090316.png]]
+![[attachments/Pasted image 20240415090316.png]]
 
 
-![[Pasted image 20240415085832.png]]
+![[attachments/Pasted image 20240415085832.png]]
 
 ## Anonymous object
 

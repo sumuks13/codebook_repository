@@ -1,4 +1,4 @@
-tags: [[Collection]], [[Data Structures]]
+tags: [[Java/Collection]], [[Data Structures/Data Structures]]
 
 ##### **List Interface**
 

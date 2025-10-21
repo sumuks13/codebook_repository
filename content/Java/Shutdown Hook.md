@@ -1,5 +1,5 @@
 
-tags: [[Thread]]
+tags: [[Java/Thread]]
 
 - A **shutdown hook** in Java is like a **last-minute cleanup crew** for your application.
 - Imagine your program as a house party: when the party ends (your application shuts down), the shutdown hook ensures that everything is tidied up before everyone leaves.

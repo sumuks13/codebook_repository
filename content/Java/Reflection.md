@@ -1,4 +1,4 @@
-tags: [[Java]]
+tags: [[Java/Java]]
 
 **Java Reflection** is a _process of examining or modifying the run time behavior of a class at run time_.
 

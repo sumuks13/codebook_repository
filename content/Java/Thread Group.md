@@ -1,4 +1,4 @@
-tags: [[Thread]], [[ExecutorService]]
+tags: [[Java/Thread]], [[ExecutorService]]
 
 A thread group is a collection of threads. It is a way to organize and manage threads. 
 Thread groups can be used to:

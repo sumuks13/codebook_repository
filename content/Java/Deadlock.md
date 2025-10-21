@@ -1,4 +1,4 @@
-tags: [[Thread]]. [[Multithreading]], [[Synchronization]]
+tags: [[Java/Thread]]. [[Java/Multithreading]], [[Java/Synchronization]]
 
 ### **What is a deadlock?**
 

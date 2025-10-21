@@ -1,4 +1,4 @@
-tags: [[Java]], [[Memory Management]]
+tags: [[Java/Java]], [[Java/Memory Management]]
 
 Garbage Collector is Java's Automatic Memory management system that allocates and de-allocates Objects.
 

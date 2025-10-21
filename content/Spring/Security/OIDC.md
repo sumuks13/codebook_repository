@@ -1,4 +1,4 @@
-tags: [[Spring Security]], [[OAuth2.0]]
+tags: [[Spring Security]], [[Spring/Security/OAuth2.0]]
 
 #### **What is OIDC?**
 
@@ -19,7 +19,7 @@ tags: [[Spring Security]], [[OAuth2.0]]
 
 #### **How OIDC Works?**
 
-![[Pasted image 20251005205548.png]]
+![[attachments/Pasted image 20251005205548.png]]
 
 #### **What are the parameters used in OIDC flows?**
 

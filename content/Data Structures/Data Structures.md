@@ -29,7 +29,7 @@ Non-linear data structures allow elements to be **connected in multiple ways** r
 
 Examples include:
 
-- **[[Tree]]:** A hierarchical structure where each node is connected to child nodes.
+- **[[Data Structures/Tree]]:** A hierarchical structure where each node is connected to child nodes.
 - **Graph:** A collection of vertices connected by edges, useful in networks.
 - **Hash Table:** A structure that maps keys to values using a hash function for fast access.
 

@@ -1,4 +1,4 @@
-tags : [[Java]]
+tags : [[Java/Java]]
 
 ### **What is the `final` keyword in Java?**
 

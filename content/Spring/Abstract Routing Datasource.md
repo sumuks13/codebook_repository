@@ -1,1 +1,1 @@
-tags : [[Spring Boot]], [[Multitenancy]]
+tags : [[Spring/Spring Boot]], [[Spring/Multitenancy]]
