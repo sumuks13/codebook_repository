@@ -49,16 +49,63 @@ Deleting a node involves three cases:
 
 1. **Node has no children**: Simply remove it.
 2. **Node has one child**: Replace it with its child.
-3. **Node has two children**: Find the smallest value in the right subtree (called the inorder successor), replace the node’s value with it, and then delete the successor.
-
-### **How do you find the height of a BST?**
-
-The height of a tree is the number of edges on the longest path from the root to a leaf. A tree with only one node has height 0.
+3. **Node has two children**: 
+	1. Find the smallest value in the right subtree (called the inorder successor).
+	2. Replace the node’s value with it.
+	3. Delete the successor.
 
 ```java
-int height(TreeNode root) {
-    if (root == null) return -1;
-    return 1 + Math.max(height(root.left), height(root.right));
+class Solution {
+    public TreeNode deleteNode(TreeNode root, int key) {
+        // Base case
+        if (root == null) {
+            return root;
+        }
+
+        // Go left if key is smaller than the current node
+        if (key < root.val) {
+            root.left = deleteNode(root.left, key);
+        }
+        // Go right if key is greater than the current node
+        else if (key > root.val) {
+            root.right = deleteNode(root.right, key);
+        }
+        // The current node is the one to be deleted
+        else {
+            // Case 1: Node has no children (leaf node)
+            if (root.left == null && root.right == null) {
+	            // Replaces the current node with null
+                return null;
+            }
+
+            // Case 2: Node has only one child
+            else if (root.left == null || root.right == null) {
+                // Replace the the current node with the non-null child
+                return (root.left == null) ? root.right : root.left;
+            }
+
+            // Case 3: Node has two children
+            else {
+                // Find the inorder successor (smallest value in the right subtree)
+                TreeNode successor = root.right;
+                while (successor.left != null) {
+                    successor = successor.left;
+                }
+
+                // Replace current node's value with successor's value
+                root.val = successor.val;
+
+                // Delete the successor node from the right subtree
+                root.right = deleteNode(root.right, root.val);
+
+                // Return the updated current node
+                return root;
+            }
+        }
+
+        // Return the unchanged root if no deletion occurred at this level
+        return root;
+    }
 }
 ```
 
@@ -67,7 +114,7 @@ int height(TreeNode root) {
 To find the **minimum**, keep moving to the left child until you reach a node with no left child.  
 To find the **maximum**, keep moving to the right child until you reach a node with no right child.
 
-### **How do you check if a Tree is a valid BST?
+### **How do you check if a Tree is a valid BST?**
 
 You can validate a BST by ensuring every node follows the BST rule across the entire tree: 
 - left child < node < right child. 
@@ -89,13 +136,13 @@ boolean isValidBST(TreeNode root, Integer min, Integer max) {
 
 These are useful in range queries and nearest-value lookups.
 
-### **How do you print all values in a range?
+### **How do you print all values in a range?**
 
 To print values between two numbers (say `low` and `high`), use an inorder traversal and only print nodes that fall within the range.
 
-## How Do You Find the k-th Smallest or Largest Element?
+### **How do you find the k-th smallest or largest element?
 
-Since an inorder traversal gives sorted values, you can count nodes during traversal:
+An inorder traversal gives nodes in sorted order. We keep track of how many nodes we've visited. When the counter reaches k, we return that node's value. 
 
 - The **k-th smallest** is the k-th node visited in inorder.
 
