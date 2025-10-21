@@ -1,4 +1,4 @@
-tags: [[Hibernate]], [[Spring Data JPA]]
+tags: [[Spring/Hibernate]], [[Spring/Spring Data JPA]]
 
 Spring provides API to easily integrate Spring with ORM frameworks such as Hibernate, JPA(Java Persistence API), JDO(Java Data Objects), Oracle Toplink and iBATIS.
 

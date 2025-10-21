@@ -1,4 +1,4 @@
-tags : [[Spring Boot]], [[Spring Framework]], [[IOC Container]],[[Design Patterns]], [[Autowiring]]
+tags : [[Spring/Spring Boot]], [[Spring/Spring Framework]], [[Spring/IOC Container]],[[Design Patterns]], [[Spring/Autowiring]]
 
 ### Inversion Of Control (IOC) and Dependency Injection
 

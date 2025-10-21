@@ -8,15 +8,15 @@ read value from properties
      }
 ```
 
-[[Spring Framework]]
+[[Spring/Spring Framework]]
 [[Spring Boot - Fundamentals]]
 [[Dependency Injection]]
-[[Spring IOC]]
-[[Spring MVC]]
+[[Spring/Spring IOC]]
+[[Spring/Spring MVC]]
 [[Spring Web]]
 [[Spring Security]]
-[[Spring AOP]]
-[[Spring JDBC]]
-[[Spring ORM]]
-[[REST Controller]]
-[[Spring Data JPA]]
+[[Spring/Spring AOP]]
+[[Spring/Spring JDBC]]
+[[Spring/Spring ORM]]
+[[Spring/REST Controller]]
+[[Spring/Spring Data JPA]]

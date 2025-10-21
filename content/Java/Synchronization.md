@@ -1,4 +1,4 @@
-tags: [[Multithreading]]
+tags: [[Java/Multithreading]]
 
 Synchronization is the capability to control/restrict the access of multiple threads to any shared resource.
 

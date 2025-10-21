@@ -1,4 +1,4 @@
-tags :[[Multithreading]]
+tags :[[Java/Multithreading]]
 
 ## Thread class:
 
@@ -88,7 +88,7 @@ No. After starting a thread, it can never be started again. If you does so, an 
 - Each thread <mark style="background: #FFB86CA6;">starts</mark> in a separate call stack.
 - Invoking the run() method from the main thread, the run() method goes onto the current call stack rather than at the beginning of a new call stack.
 
-![[Pasted image 20240511112620.png]]
+![[attachments/Pasted image 20240511112620.png]]
 
 #### Thread.join()
 
