@@ -51,7 +51,7 @@ Deleting a node involves three cases:
 2. **Node has one child**: Replace it with its child.
 3. **Node has two children**: 
 	1. Find the smallest value in the right subtree (called the inorder successor).
-	2. Replace the node’s value with it.
+	2. Replace the current node’s value with successor's value.
 	3. Delete the successor.
 
 ```java
@@ -86,16 +86,16 @@ class Solution {
 
             // Case 3: Node has two children
             else {
-                // Find the inorder successor (smallest value in the right subtree)
+                // 3.1 Find the inorder successor
                 TreeNode successor = root.right;
                 while (successor.left != null) {
                     successor = successor.left;
                 }
 
-                // Replace current node's value with successor's value
+                // 3.2 Replace current node's value with successor's value
                 root.val = successor.val;
 
-                // Delete the successor node from the right subtree
+                // 3.3 Delete the successor node from the right subtree
                 root.right = deleteNode(root.right, root.val);
 
                 // Return the updated current node
