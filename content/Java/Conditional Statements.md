@@ -1,4 +1,4 @@
-tags: [[Control Statements]]
+tags: [[Java/Control Statements]]
 ### **What are conditional statements in Java?**
 
 - Conditional statements allow Java programs to **make decisions** based on **boolean expressions**. 

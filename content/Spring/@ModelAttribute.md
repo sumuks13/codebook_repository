@@ -1,4 +1,4 @@
-tags: [[Spring Boot]]
+tags: [[Spring/Spring Boot]]
 references  : https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
 
 ### Method Level

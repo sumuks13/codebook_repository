@@ -1,4 +1,4 @@
-tags: [[Binary Search]], [[Tree]]
+tags: [[Binary Search]], [[Data Structures/Tree]]
 
 ### **What is a Binary Search Tree?**
 

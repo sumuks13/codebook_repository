@@ -1,4 +1,4 @@
-tags : [[Spring Boot]], [[Spring WebClient]]
+tags : [[Spring/Spring Boot]], [[Spring/Spring WebClient]]
 
 In simple terms, Mono and Flux are implementations of the Publisher interface in Spring WebFlux. They are used for reactive programming in web applications. Here's a breakdown of what they are and how they are used:
 
