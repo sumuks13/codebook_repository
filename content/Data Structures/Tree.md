@@ -1,7 +1,8 @@
-Tags: [[Data Structures]]
+Tags: [[Data Structures]], [[Graph]]
 ### **What is a Tree Data Structure? Explain its Properties.**
 
 A **tree** is a hierarchical data structure consisting of **nodes** connected by **edges**. It starts with a **root node** and branches out into child nodes.  
+
 **Properties:**
 
 - **Root Node:** The topmost node.
