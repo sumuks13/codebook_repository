@@ -1,4 +1,4 @@
-tags : [[Spring ORM]]
+tags : [[Spring/Spring ORM]]
 
 Spring Data JPA API provides JpaTemplate class to integrate spring application with JPA.
 

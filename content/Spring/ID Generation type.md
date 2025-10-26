@@ -1,4 +1,4 @@
-Tags: [[Spring Boot]]
+Tags: [[Spring/Spring Boot]]
 
 The four generation types in Java Spring (Hibernate) are AUTO, IDENTITY, SEQUENCE, and TABLE. Here are the differences between them:
 

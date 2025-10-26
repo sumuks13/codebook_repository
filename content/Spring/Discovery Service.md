@@ -1,4 +1,4 @@
-tags: [[Spring Boot]], [[Microservices]], [[Load Balancing]]
+tags: [[Spring/Spring Boot]], [[Microservices]], [[Load Balancing]]
 
 Here are the key components and concepts associated with service discovery:
 

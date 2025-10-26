@@ -1,4 +1,4 @@
-tags : [[Spring Boot]]
+tags : [[Spring/Spring Boot]]
 
 It was **developed by Rod Johnson in 2003**. Spring framework makes the easy development of JavaEE application.
 
@@ -42,7 +42,7 @@ It provides declarative support for caching, validation, transactions and format
 
 The Spring framework comprises of many modules such as core, beans, context, expression language, AOP, Aspects, Instrumentation, JDBC, ORM, OXM, JMS, Transaction, Web, Servlet, Struts etc. These modules are grouped into Test, Core Container, AOP, Aspects, Instrumentation, Data Access / Integration, Web (MVC / Remoting) as displayed in the following diagram.
 
-![[Pasted image 20240428193650.png]]
+![[attachments/Pasted image 20240428193650.png]]
 
 ### Test
 This layer provides support of testing with JUnit and TestNG.

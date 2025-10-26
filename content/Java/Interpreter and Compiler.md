@@ -1,4 +1,4 @@
-tags: [[Java]]
+tags: [[Java/Java]]
 
 #### Compiler
 

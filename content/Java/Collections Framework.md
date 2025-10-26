@@ -1,4 +1,4 @@
-tags: [[Java]], [[Collection]]
+tags: [[Java/Java]], [[Java/Collection]]
 
  **Collections framework** provides an architecture to store and manipulate group of objects.
 

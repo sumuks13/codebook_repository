@@ -1,4 +1,4 @@
-tags : [[Algorithms]]
+tags : [[Algorithms/Algorithms]]
 
 Lazy loading is ==a technique that improves website performance by delaying the loading of certain elements until they are needed==. This means that images, videos, and other elements aren't loaded until the user scrolls down to where they're located.
 

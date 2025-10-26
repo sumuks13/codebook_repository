@@ -1,5 +1,5 @@
-1. [[Preorder Traversal]]
-2. [[Inorder Traversal]]
+1. [[Algorithms/Preorder Traversal]]
+2. [[Algorithms/Inorder Traversal]]
 
 Array
 String
