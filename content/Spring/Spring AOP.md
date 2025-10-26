@@ -39,7 +39,7 @@ Advice represents an action taken by an aspect at a particular join point. There
 - **After (finally) Advice**: it executes after a join point regardless of join point exit whether normally or exceptional return.
 - **Around Advice**: It executes before and after a join point.
 
-![[attachments/Pasted image 20240602134033.png]]
+![[Pasted image 20240602134033.png]]
 
 - **MethodBeforeAdvice** interface extends the **BeforeAdvice** interface.
 - **AfterReturningAdvice** interface extends the **AfterAdvice** interface.

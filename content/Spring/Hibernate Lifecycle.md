@@ -1,4 +1,4 @@
-tags: [[Spring/Hibernate]]
+tags: [[Hibernate]]
 
 in Hibernate, each entity is associated with the lifecycle. The entity object passes through the different stages of the lifecycle:
 
@@ -6,7 +6,7 @@ in Hibernate, each entity is associated with the lifecycle. The entity object pa
 - Persistent state
 - Detached state
 
-![[attachments/Pasted image 20240608125040.png]]
+![[Pasted image 20240608125040.png]]
 
 ## Transient state
 

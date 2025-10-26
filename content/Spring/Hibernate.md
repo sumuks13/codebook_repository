@@ -1,6 +1,6 @@
-tags : [[Spring/Spring ORM]], [[Spring/Hibernate Lifecycle]]
+tags : [[Spring ORM]], [[Hibernate Lifecycle]]
 
-![[attachments/Pasted image 20240608121317.png]]
+![[Pasted image 20240608121317.png]]
 
 In hibernate framework, we provide all the database information hibernate.cfg.xml file.
 

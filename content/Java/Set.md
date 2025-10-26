@@ -1,4 +1,4 @@
-tags: [[Java/Collection]], [[Data Structures/Data Structures]]
+tags: [[Collection]], [[Data Structures]]
 
 
 ### **Set Interface**

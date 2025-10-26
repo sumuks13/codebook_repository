@@ -1,4 +1,4 @@
-tags : [[Java/Conditional Statements]]
+tags : [[Conditional Statements]]
 
 ### **What are control statements in Java?**
 

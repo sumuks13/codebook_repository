@@ -1,4 +1,4 @@
-tags : [[Java/Thread]]
+tags : [[Thread]]
 
 **Thread pool** is a group of worker threads that can be reused many times.
 

@@ -1,4 +1,4 @@
-tags: [[Java/Collection]], [[Data Structures/Data Structures]]
+tags: [[Collection]], [[Data Structures]]
 
 ### **What is the Queue interface in Java?**
 

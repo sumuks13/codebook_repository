@@ -1,4 +1,4 @@
-Tags : [[Algorithms/Algorithms]]
+Tags : [[Algorithms]]
 
 KMP algorithm is used for the string matching problem.
 Time Complexity : O(m+n)

@@ -1,4 +1,4 @@
-tags: [[Java/Thread]], [[Java/Multithreading]]
+tags: [[Thread]], [[Multithreading]]
 
 A component of Java that decides which thread to run or execute and which thread to wait is called a **thread scheduler**
 
@@ -23,7 +23,7 @@ In this scheduling algorithm, the scheduler picks the threads thar arrive first 
 t1 -> t2 -> t3 -> t4
 
 #### Time-slicing scheduling:
-<span class="smallimg"><span class="leftimg"> ![[attachments/Pasted image 20240511104248.png]] </span></span>
+<span class="smallimg"><span class="leftimg"> ![[Pasted image 20240511104248.png]] </span></span>
 
 Usually, the First Come First Serve algorithm is non-preemptive, which is bad as it may lead to infinite blocking (also known as starvation). 
 
@@ -35,7 +35,7 @@ Thus, the other waiting threads also get time to run their job.
 
 Suppose there are multiple threads available in the runnable state. The thread scheduler picks that thread that has the highest priority. Since the algorithm is also preemptive, therefore, time slices are also provided to the threads to avoid starvation. Thus, after some time, even if the highest priority thread has not completed its job, it has to release the CPU because of preemption.
 
-![[attachments/Pasted image 20240511104443.png]]
+![[Pasted image 20240511104443.png]]
 
 
 ## Working of the Java Thread Scheduler

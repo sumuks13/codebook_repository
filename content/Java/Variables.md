@@ -1,4 +1,4 @@
-tags : [[Java/Java]]
+tags : [[Java]]
 
 #### 1) Local Variable
 

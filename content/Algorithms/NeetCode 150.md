@@ -1,4 +1,4 @@
-tags : [[Algorithms/Algorithms]]
+tags : [[Algorithms]]
 ### Here are the leetcode lists for Blind 75 and more
 
 Blind 75: https://leetcode.com/list/oizxjoit

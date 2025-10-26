@@ -1,4 +1,4 @@
-tags: [[Spring Security]], [[Spring/Security/OIDC]]
+tags: [[Spring Security]], [[OIDC]]
 
 #### **What is OAuth 2.0?**
 
@@ -46,7 +46,7 @@ tags: [[Spring Security]], [[Spring/Security/OIDC]]
     - Server returns `access_token` (+ optional `refresh_token`, `id_token` if OIDC).
 - **Security notes:** Tokens stay off the front-end; CSRF mitigated via `state`; use HTTPS; rotate secrets; prefer short-lived access tokens.
 
-![[attachments/Pasted image 20251002205545.png]]
+![[Pasted image 20251002205545.png]]
 
 #### **Explain Authorization Code Flow with PKCE**
 
@@ -60,7 +60,7 @@ tags: [[Spring Security]], [[Spring/Security/OIDC]]
     - Receive tokens as usual.
 - **Security notes:** Thwarts code interception/replay; always use `S256` over `plain`; still use `state` and HTTPS.
 
-![[attachments/Pasted image 20251003211728.png]]
+![[Pasted image 20251003211728.png]]
 
 #### **Explain Client Credentials Flow
 
@@ -72,7 +72,7 @@ tags: [[Spring Security]], [[Spring/Security/OIDC]]
     - Client calls resource server with `Authorization: Bearer <token>`.
 - **Security notes:** Use strong client auth (mTLS or signed JWT); scope tokens tightly to specific APIs; avoid refresh tokens; keep lifetimes short.
 
-![[attachments/Pasted image 20251002210645.png]]
+![[Pasted image 20251002210645.png]]
 
 #### **Explain Device Code Flow**
 
@@ -86,7 +86,7 @@ tags: [[Spring Security]], [[Spring/Security/OIDC]]
     - Authorization server returns `access_token` (and optionally `refresh_token`).
 - **Security notes:** Respect polling interval; show expiry; bind scopes minimally; secure device storage; handle denial/timeout gracefully.
 
-![[attachments/Pasted image 20251002211032.png]]
+![[Pasted image 20251002211032.png]]
 
 #### **Explain Implicit Flow**
 
@@ -98,7 +98,7 @@ tags: [[Spring Security]], [[Spring/Security/OIDC]]
     - Client parses fragment and calls APIs.
 - **Security notes:** Token appears in browser history and referrers; vulnerable to interception; no refresh tokens; prefer code + PKCE.
 
-![[attachments/Pasted image 20251002211627.png]]
+![[Pasted image 20251002211627.png]]
 
 #### **Explain Resource owner password credentials (ROPC)**
 
@@ -110,7 +110,7 @@ tags: [[Spring Security]], [[Spring/Security/OIDC]]
     - Client accesses resources with the token.
 - **Security notes:** Breaks delegated auth principle; exposes credentials to client; difficult to enforce MFA; migrate to code + PKCE or device code.
 
-![[attachments/Pasted image 20251002212023.png]]
+![[Pasted image 20251002212023.png]]
 
 #### **What are the common parameters and headers used across flows?**
 

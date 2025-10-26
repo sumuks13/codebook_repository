@@ -1,4 +1,4 @@
-tags: [[Spring/Spring IOC]]
+tags: [[Spring IOC]]
 
 The IoC container is responsible to instantiate, configure and assemble the objects. 
 

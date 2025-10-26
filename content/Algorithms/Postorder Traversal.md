@@ -1,4 +1,4 @@
-tags: [[Algorithms/Algorithms]], [[Depth First Search]]
+tags: [[Algorithms]], [[Depth First Search]]
 
 ### **Algorithm**
 

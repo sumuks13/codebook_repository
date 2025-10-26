@@ -1,4 +1,4 @@
-tags : [[Spring/Spring Boot]], [[Spring/Spring RestTemplate]]
+tags : [[Spring Boot]], [[Spring RestTemplate]]
 URL : [howtodoinjava.com](https://howtodoinjava.com/spring-webflux/webclient-get-post-example/#2-creating-a-spring-webclient-instance)
 
 **Spring `WebClient`** is a **non-blocking and reactive web client** to perform HTTP requests. **The `WebClient` has been added in  Spring 5  and provides the fluent functional-style _API_ for sending HTTP requests and handling the responses.**

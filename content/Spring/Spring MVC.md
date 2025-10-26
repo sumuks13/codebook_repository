@@ -1,4 +1,4 @@
-tags: [[Spring/Spring Framework]]
+tags: [[Spring Framework]]
 
 A Spring MVC is a Java framework which is used to build web applications. 
 It follows the Model-View-Controller design pattern. 
@@ -7,7 +7,7 @@ It implements all the basic features of a core spring framework like Inversion o
 
 **DispatcherServlet** is the class that receives the incoming request and maps it to the right resource such as controllers, models, and views.
 
-![[attachments/Pasted image 20240608122124.png]]
+![[Pasted image 20240608122124.png]]
 
 - **Model** - A model contains the data of the application. A data can be a single object or a collection of objects.
 

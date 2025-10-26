@@ -1,4 +1,4 @@
-tags : [[Spring/Spring Boot]]
+tags : [[Spring Boot]]
 
 Spring Boot Framework has mainly four major Components.
 - Spring Boot Starters
@@ -10,7 +10,7 @@ Other components:
 - Spring Initilizr
 - Spring Boot IDEs
 
-![[attachments/Pasted image 20240602212648.png]]
+![[Pasted image 20240602212648.png]]
 
 **Spring Boot Starter:**
 
