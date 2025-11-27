@@ -34,7 +34,16 @@ A variable is a named storage location that can be modified during execution; a 
 
 **What are the 8 primitive data types in Java?**
 
-The eight primitive data types are: byte, short, int, long, float, double, char, and boolean. Each has a specific range of values and memory footprint. For example, byte ranges from -128 to 127, while long can hold much larger values.
+| Data Type   | Size                             | Default Value | Range                                                        |
+| ----------- | -------------------------------- | ------------- | ------------------------------------------------------------ |
+| **byte**    | 1 byte (8 bits)                  | 0             | -128 to 127                                                  |
+| **short**   | 2 bytes                          | 0             | -32,768 to 32,767                                            |
+| **int**     | 4 bytes                          | 0             | -2,147,483,648 to 2,147,483,647                              |
+| **long**    | 8 bytes                          | 0L            | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807      |
+| **float**   | 4 bytes                          | 0.0f          | Approx. ±3.4e−038 to ±3.4e+038 (7 decimal digits precision)  |
+| **double**  | 8 bytes                          | 0.0d          | Approx. ±1.7e−308 to ±1.7e+308 (15 decimal digits precision) |
+| **char**    | 2 bytes (Unicode)                | '\u0000'      | 0 to 65,535 (unsigned)                                       |
+| **boolean** | JVM-dependent (typically 1 byte) | false         | true or false                                                |
 
 **What are variable scopes in Java?**
 
