@@ -46,6 +46,81 @@ No, Streams are consumed after terminal operation. Attempting to reuse causes Il
 
 ---
 
+## Cheatsheet
+
+
+**Creation (Getting a Stream)**
+
+| **Method**                                   | **Description**                                                    | **Example**                     |
+| -------------------------------------------- | ------------------------------------------------------------------ | ------------------------------- |
+| **`Collection.stream()`**                    | Creates a stream from a Collection (List, Set, etc.).              | `list.stream()`                 |
+| **`Arrays.stream(T[] array)`**               | Creates a stream from an array.                                    | `Arrays.stream(names)`          |
+| **`Stream.of(T... values)`**                 | Creates a stream with a fixed number of elements.                  | `Stream.of("a", "b", "c")`      |
+| **`IntStream/LongStream.range(start, end)`** | Creates a stream of primitive integers/longs (exclusive end).      | `IntStream.range(1, 10)`        |
+| **`Stream.generate(...)`**                   | Creates an **infinite** stream using a `Supplier`.                 | `Stream.generate(Math::random)` |
+| **`Stream.iterate(...)`**                    | Creates an **infinite** stream by iteratively applying a function. | `Stream.iterate(0, n -> n + 2)` |
+
+**Intermediate Operations (Lazy & Chainable)**: Intermediate operations transform the stream and return a new stream. They are **lazy** and execute only when a terminal operation is called.
+
+| **Operation**    | **Function**             | **Description**                                                   | **Example**                                        |
+| ---------------- | ------------------------ | ----------------------------------------------------------------- | -------------------------------------------------- |
+| **`filter()`**   | `Predicate<T>`           | Selects elements that match a condition.                          | `.filter(n -> n > 5)`                              |
+| **`map()`**      | `Function<T, R>`         | Transforms each element into a new object/type.                   | `.map(String::toUpperCase)`                        |
+| **`flatMap()`**  | `Function<T, Stream<R>>` | **Flattens** a stream of collections/arrays into a single stream. | `.flatMap(List::stream)`                           |
+| **`distinct()`** | None                     | Removes duplicate elements based on `equals()`.                   | `.distinct()`                                      |
+| **`sorted()`**   | `Comparator<T>`          | Sorts elements. Takes an optional `Comparator`.                   | `.sorted()` / `.sorted(Comparator.reverseOrder())` |
+| **`peek()`**     | `Consumer<T>`            | Performs an action on each element, useful for debugging/logging. | `.peek(System.out::println)`                       |
+| **`limit()`**    | `long maxSize`           | Short-circuits the stream after the given number of elements.     | `.limit(10)`                                       |
+| **`skip()`**     | `long n`                 | Skips the first $N$ elements of the stream.                       | `.skip(5)`                                         |
+
+**Primitive Stream Mapping**: These operations convert a stream of wrapper objects (`Stream<Integer>`, `Stream<Double>`, etc.) to a specialized, efficient primitive stream.
+
+| **Conversion**      | **Purpose**       | **Example**                       |
+| ------------------- | ----------------- | --------------------------------- |
+| **`mapToInt()`**    | To `IntStream`    | `.mapToInt(String::length)`       |
+| **`mapToLong()`**   | To `LongStream`   | `.mapToLong(MyObject::getId)`     |
+| **`mapToDouble()`** | To `DoubleStream` | `.mapToDouble(Product::getPrice)` |
+
+**Terminal Operations (Eager & Final)**: Terminal operations start the stream pipeline, produce a result, and consume the stream.
+
+|**Operation**|**Return Type**|**Description**|**Example**|
+|---|---|---|---|
+|**`forEach()`**|`void`|Executes an action for each element. (Non-stream result)|`.forEach(System.out::println)`|
+|**`collect()`**|`R` (flexible)|Accumulates elements into a mutable container (List, Set, Map, etc.).|`.collect(Collectors.toList())`|
+|**`toList()`** (Java 16+)|`List<T>`|Simple collection shortcut.|`.toList()`|
+|**`reduce()`**|`T` or `Optional<T>`|Combines elements into a single result using an accumulator function.|`.reduce(1, (a, b) -> a * b)`|
+|**`count()`**|`long`|Returns the number of elements in the stream.|`.count()`|
+|**`min() / max()`**|`Optional<T>`|Returns the min/max element based on a `Comparator`.|`.max(Comparator.naturalOrder())`|
+|**`findFirst()`**|`Optional<T>`|Returns the first element (short-circuiting).|`.findFirst()`|
+|**`findAny()`**|`Optional<T>`|Returns any element (useful for parallel streams).|`.findAny()`|
+|**`allMatch()`**|`boolean`|Checks if **all** elements match the `Predicate`.|`.allMatch(n -> n > 0)`|
+|**`anyMatch()`**|`boolean`|Checks if **any** element matches the `Predicate`.|`.anyMatch(n -> n == 0)`|
+|**`noneMatch()`**|`boolean`|Checks if **no** elements match the `Predicate`.|`.noneMatch(n -> n < 0)`|
+
+Collectors (`collect()`): The `Collectors` utility class provides factory methods for common reduction operations.
+
+|**Collector Method**|**Return Type**|**Description**|**Example**|
+|---|---|---|---|
+|**`toList()`**|`List<T>`|Collects elements into a `List`.|`.collect(Collectors.toList())`|
+|**`toSet()`**|`Set<T>`|Collects elements into a `Set`.|`.collect(Collectors.toSet())`|
+|**`joining()`**|`String`|Concatenates strings with an optional delimiter.|`.collect(joining(", "))`|
+|**`counting()`**|`Long`|Counts the elements.|`.collect(counting())`|
+|**`summingInt()`**|`Integer`|Sums elements after applying an `IntMapper`.|`.collect(summingInt(Product::getQuantity))`|
+|**`averagingDouble()`**|`Double`|Calculates the average.|`.collect(averagingDouble(Person::getAge))`|
+|**`groupingBy()`**|`Map<K, List<T>>`|Groups elements by a key function.|`.collect(groupingBy(Book::getAuthor))`|
+|**`partitioningBy()`**|`Map<Boolean, List<T>>`|Splits elements into two groups (true/false) based on a `Predicate`.|`.collect(partitioningBy(User::isActive))`|
+|**`mapping()`**|(Downstream)|Transforms elements **within** a grouping collector.|`.collect(groupingBy(..), mapping(..))`|
+
+Reduction (`reduce()` vs. Primitive Methods)
+
+|**Operation**|**Signature**|**Benefit**|**Use Case**|
+|---|---|---|---|
+|**`reduce(identity, accumulator)`**|`T`|Most flexible; can perform any accumulation.|Product: `.reduce(1, (a, b) -> a * b)`|
+|**`sum()`** (on primitive streams)|`int/long/double`|Highly efficient and returns the primitive result directly.|Sum of prices: `.mapToInt(p -> p).sum()`|
+|**`average()`** (on primitive streams)|`OptionalDouble`|Handles empty streams gracefully and is efficient.|`.mapToDouble(d -> d).average()`|
+
+---
+
 ## Code Examples
 
 **Example - Functional Interfaces:**
@@ -125,3 +200,4 @@ int parallelSum = numbers.parallelStream()
 - **Stream Characteristics**: Stateless operations preferred; avoid external state modification within streams.
 - **Performance**: Stream overhead minimal for small collections; benefits large datasets or complex chains.
 - **Method Reference Types**: Static (`Class::method`), instance (`obj::method`), constructor (`Class::new`).
+- For numerical calculations, use **primitive streams** (`IntStream`, `DoubleStream`, or `LongStream`) over generic `Stream<T>` for **optimized terminal operations** like `sum()`, `average()`, and `max()`.
