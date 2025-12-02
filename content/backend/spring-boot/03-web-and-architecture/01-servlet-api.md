@@ -1,6 +1,8 @@
 ---
-{"publish":true,"title":"Servlet API","tags":["spring-boot"],"cssclasses":""}
+{"publish":true,"title":"Servlet API","cssclasses":""}
 ---
+
+tags: [[backend/spring-boot/03-web-and-architecture/03-web-and-architecture]]
 
 ## Definitions
 
