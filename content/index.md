@@ -3,10 +3,10 @@
 ---
 
 A curated collection of programming concepts for quick access and future reference.
-
 ### **Concepts:**
 
-![[Untitled.base]]
-
-
-
+| frontend | backend                                 | database | dsa | devops |
+| -------- | --------------------------------------- | -------- | --- | ------ |
+|          | [java](backend/java/)                   |          |     |        |
+|          | [spring-boot](backend/spring-boot/)     |          |     |        |
+|          | [microservices](backend/microservices/) |          |     |        |
