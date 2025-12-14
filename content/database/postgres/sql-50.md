@@ -2,7 +2,7 @@
 {"publish":true,"title":"SQL 50","cssclasses":""}
 ---
 
-tags: [postgres](database/postgres/), [[backend/java/15-lambdas-and-streams]]
+tags: [postgres](database/postgres/), [[backend/java/04-functional-programming/02-lambdas-and-streams]]
 
 [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/)
 **Write a solution to find the ids of products that are both low fat and recyclable.**
@@ -663,3 +663,36 @@ GROUP BY contest_id, c
 ORDER BY percentage desc, contest_id;
 ```
 
+---
+
+[1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/)
+
+Write a solution to find each query_name, the quality and poor_query_percentage. Both quality and poor_query_percentage should be rounded to 2 decimal places. Quality is the average of the ratio between query rating and position. A query is poor if its rating is less than 3.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Queries table</th> </tr> <tr> <th>query_name</th> <th>result</th> <th>position</th> <th>rating</th> </tr> <tr><td>Dog</td><td>Golden Retriever</td><td>1</td><td>5</td></tr> <tr><td>Dog</td><td>German Shepherd</td><td>2</td><td>5</td></tr> <tr><td>Dog</td><td>Mule</td><td>200</td><td>1</td></tr> <tr><td>Cat</td><td>Shirazi</td><td>5</td><td>2</td></tr> <tr><td>Cat</td><td>Siamese</td><td>3</td><td>3</td></tr> <tr><td>Cat</td><td>Sphynx</td><td>7</td><td>4</td></tr> </table> </div> <div> <table> <tr> <th colspan="3">Output</th> </tr> <tr><th>query_name</th><th>quality</th><th>poor_query_percentage</th></tr> <tr><td>Dog</td><td>2.50</td><td>33.33</td></tr> <tr><td>Cat</td><td>0.66</td><td>33.33</td></tr> </table> </div> </div>
+
+```sql
+SELECT query_name, ROUND(AVG(rating::numeric / position), 2) AS quality,
+ROUND(AVG(CASE WHEN rating < 3 THEN 1 ELSE 0 END)::numeric * 100, 2) AS poor_query_percentage
+FROM queries
+GROUP BY query_name;
+```
+
+---
+
+## 1193. Monthly Transactions I
+
+[1193. Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/)
+
+Write a solution to find for each month and country, the number of transactions and their total amount, the number of approved transactions and their total amount.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="5">Input: Transactions table</th> </tr> <tr> <th>id</th> <th>country</th> <th>state</th> <th>amount</th> <th>trans_date</th> </tr> <tr><td>121</td><td>US</td><td>approved</td><td>1000</td><td>2018-12-18</td></tr> <tr><td>122</td><td>US</td><td>declined</td><td>2000</td><td>2018-12-19</td></tr> <tr><td>123</td><td>US</td><td>approved</td><td>2000</td><td>2019-01-01</td></tr> <tr><td>124</td><td>DE</td><td>approved</td><td>2000</td><td>2019-01-07</td></tr> </table> </div> <div> <table> <tr> <th colspan="6">Output</th> </tr> <tr><th>month</th><th>country</th><th>trans_count</th><th>approved_count</th><th>trans_total_amount</th><th>approved_total_amount</th></tr> <tr><td>2018-12</td><td>US</td><td>2</td><td>1</td><td>3000</td><td>1000</td></tr> <tr><td>2019-01</td><td>US</td><td>1</td><td>1</td><td>2000</td><td>2000</td></tr> <tr><td>2019-01</td><td>DE</td><td>1</td><td>1</td><td>2000</td><td>2000</td></tr> </table> </div> </div>
+
+```sql
+SELECT TO_CHAR(trans_date, 'YYYY-MM') AS month, country, count(*) AS trans_count,
+SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 END) AS approved_count,
+SUM(amount) AS trans_total_amount,
+SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
+FROM transactions
+GROUP BY month, country;
+```
