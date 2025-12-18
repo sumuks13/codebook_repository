@@ -696,3 +696,34 @@ SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amoun
 FROM transactions
 GROUP BY month, country;
 ```
+
+---
+
+## 1174. Immediate Food Delivery II
+
+[1174. Immediate Food Delivery II](https://leetcode.com/problems/immediate-food-delivery-ii/)
+
+Write a solution to find the percentage of immediate orders in the first orders of all customers. Round to 2 decimal places. An order is immediate if the order date equals the customer preferred delivery date.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Delivery table</th> </tr> <tr> <th>delivery_id</th> <th>customer_id</th> <th>order_date</th> <th>customer_pref_delivery_date</th> </tr> <tr><td>1</td><td>1</td><td>2019-08-01</td><td>2019-08-02</td></tr> <tr><td>2</td><td>2</td><td>2019-08-02</td><td>2019-08-02</td></tr> <tr><td>3</td><td>1</td><td>2019-08-11</td><td>2019-08-12</td></tr> <tr><td>4</td><td>3</td><td>2019-08-24</td><td>2019-08-24</td></tr> <tr><td>5</td><td>3</td><td>2019-08-21</td><td>2019-08-22</td></tr> <tr><td>6</td><td>2</td><td>2019-08-11</td><td>2019-08-13</td></tr> <tr><td>7</td><td>4</td><td>2019-08-09</td><td>2019-08-09</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>immediate_percentage</th></tr> <tr><td>50.00</td></tr> </table> </div> </div>
+
+```sql
+SELECT ROUND(AVG(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END) * 100, 2) AS immediate_percentage
+FROM delivery
+WHERE (customer_id, order_date) IN (
+    SELECT customer_id, MIN(order_date) AS first_order FROM delivery
+    GROUP BY customer_id
+)
+```
+
+```sql
+WITH first_orders AS (
+    SELECT customer_id, MIN(order_date) AS first_order_date FROM Delivery
+    GROUP BY customer_id 
+) 
+
+SELECT ROUND(SUM(CASE WHEN d.order_date = d.customer_pref_delivery_date THEN 1 ELSE 0 END)::numeric * 100 / COUNT(*), 2) AS immediate_percentage 
+FROM Delivery d 
+JOIN first_orders f ON d.customer_id = f.customer_id  AND d.order_date = f.first_order_date;
+```
+
