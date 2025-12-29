@@ -727,3 +727,17 @@ FROM Delivery d
 JOIN first_orders f ON d.customer_id = f.customer_id  AND d.order_date = f.first_order_date;
 ```
 
+---
+
+## 2356. Number of Unique Subjects Taught by Each Teacher
+
+[2356. Number of Unique Subjects Taught by Each Teacher](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/)
+
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="3">Input: Teacher table</th> </tr> <tr> <th>teacher_id</th> <th>subject_id</th> <th>dept_id</th> </tr> <tr><td>1</td><td>2</td><td>3</td></tr> <tr><td>1</td><td>2</td><td>4</td></tr> <tr><td>1</td><td>3</td><td>3</td></tr> <tr><td>2</td><td>1</td><td>1</td></tr> <tr><td>2</td><td>2</td><td>1</td></tr> <tr><td>2</td><td>3</td><td>1</td></tr> <tr><td>2</td><td>4</td><td>1</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>teacher_id</th><th>cnt</th></tr> <tr><td>1</td><td>2</td></tr> <tr><td>2</td><td>4</td></tr> </table> </div> </div>
+
+```sql
+SELECT teacher_id, COUNT(DISTINCT subject_id) AS cnt FROM teacher 
+GROUP BY teacher_id;
+```
