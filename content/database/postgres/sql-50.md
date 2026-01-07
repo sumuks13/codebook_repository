@@ -729,6 +729,28 @@ JOIN first_orders f ON d.customer_id = f.customer_id  AND d.order_date = f.first
 
 ---
 
+## 550. Game Play Analysis IV
+
+[550. Game Play Analysis IV](https://leetcode.com/problems/game-play-analysis-iv/)
+
+Write a solution to report the fraction of players that logged in again on the day after the day they first logged in, rounded to 2 decimal places.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="3">Input: Activity table</th> </tr> <tr> <th>player_id</th> <th>device_id</th> <th>event_date</th> <th>games_played</th> </tr> <tr><td>1</td><td>2</td><td>2016-03-01</td><td>5</td></tr> <tr><td>1</td><td>2</td><td>2016-03-02</td><td>6</td></tr> <tr><td>2</td><td>3</td><td>2017-06-25</td><td>1</td></tr> <tr><td>3</td><td>1</td><td>2016-03-02</td><td>0</td></tr> <tr><td>3</td><td>4</td><td>2018-07-03</td><td>5</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>fraction</th></tr> <tr><td>0.33</td></tr> </table> </div> </div>
+
+```sql
+WITH first_login AS (
+    SELECT player_id, MIN(event_date) AS first_login_date FROM activity
+    GROUP BY player_id
+)
+
+SELECT ROUND(COUNT(a2.player_id)::NUMERIC / COUNT(a1.player_id), 2) AS fraction
+FROM first_login a1
+LEFT JOIN activity a2 ON a1.player_id = a2.player_id
+AND a1.first_login_date = a2.event_date - INTERVAL '1 day';
+```
+
+---
+
 ## 2356. Number of Unique Subjects Taught by Each Teacher
 
 [2356. Number of Unique Subjects Taught by Each Teacher](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/)
