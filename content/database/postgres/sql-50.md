@@ -763,3 +763,40 @@ Write a solution to calculate the number of unique subjects each teacher teaches
 SELECT teacher_id, COUNT(DISTINCT subject_id) AS cnt FROM teacher 
 GROUP BY teacher_id;
 ```
+
+---
+## 1141. User Activity for the Past 30 Days I
+
+[1141. User Activity for the Past 30 Days I](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/)
+
+Write a solution to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on some day if they made at least one activity on that day.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Activity table</th> </tr> <tr> <th>user_id</th> <th>session_id</th> <th>activity_date</th> <th>activity_type</th> </tr> <tr><td>1</td><td>1</td><td>2019-07-20</td><td>open_session</td></tr> <tr><td>1</td><td>1</td><td>2019-07-20</td><td>scroll_down</td></tr> <tr><td>1</td><td>1</td><td>2019-07-20</td><td>end_session</td></tr> <tr><td>2</td><td>4</td><td>2019-07-20</td><td>open_session</td></tr> <tr><td>2</td><td>4</td><td>2019-07-21</td><td>send_message</td></tr> <tr><td>2</td><td>4</td><td>2019-07-21</td><td>end_session</td></tr> <tr><td>3</td><td>2</td><td>2019-07-21</td><td>open_session</td></tr> <tr><td>3</td><td>2</td><td>2019-07-21</td><td>send_message</td></tr> <tr><td>3</td><td>2</td><td>2019-07-21</td><td>end_session</td></tr> <tr><td>4</td><td>3</td><td>2019-06-25</td><td>open_session</td></tr> <tr><td>4</td><td>3</td><td>2019-06-25</td><td>end_session</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>day</th><th>active_users</th></tr> <tr><td>2019-07-20</td><td>2</td></tr> <tr><td>2019-07-21</td><td>2</td></tr> </table> </div> </div>
+
+```sql
+SELECT activity_date AS day, count(DISTINCT user_id) AS active_users FROM activity
+WHERE activity_date BETWEEN '2019-07-27'::date - INTERVAL '29 DAYS' AND '2019-07-27'
+GROUP BY activity_date;
+```
+
+---
+
+## 1070. Product Sales Analysis III
+
+[1070. Product Sales Analysis III](https://leetcode.com/problems/product-sales-analysis-iii/)
+
+Write a solution to select the product id, year, quantity, and price for the first year of every product sold.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="5">Input: Sales table</th> </tr> <tr> <th>sale_id</th> <th>product_id</th> <th>year</th> <th>quantity</th> <th>price</th> </tr> <tr><td>1</td><td>100</td><td>2008</td><td>10</td><td>5000</td></tr> <tr><td>2</td><td>100</td><td>2009</td><td>12</td><td>5000</td></tr> <tr><td>7</td><td>200</td><td>2011</td><td>15</td><td>9000</td></tr> </table> <table> <tr> <th colspan="2">Product table</th> </tr> <tr> <th>product_id</th> <th>product_name</th> </tr> <tr><td>100</td><td>Nokia</td></tr> <tr><td>200</td><td>Apple</td></tr> <tr><td>300</td><td>Samsung</td></tr> </table> </div> <div> <table> <tr> <th colspan="4">Output</th> </tr> <tr><th>product_id</th><th>first_year</th><th>quantity</th><th>price</th></tr> <tr><td>100</td><td>2008</td><td>10</td><td>5000</td></tr> <tr><td>200</td><td>2011</td><td>15</td><td>9000</td></tr> </table> </div> </div>
+
+```sql
+WITH first_year AS (
+    SELECT product_id, MIN(year) as year FROM sales
+    GROUP BY product_id
+)
+
+SELECT s.product_id, s.year AS first_year, s.quantity, s.price FROM sales s
+JOIN first_year f ON s.product_id = f.product_id AND s.year = f.year;
+```
+
+---
