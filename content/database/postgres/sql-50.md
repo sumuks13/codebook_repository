@@ -800,3 +800,43 @@ JOIN first_year f ON s.product_id = f.product_id AND s.year = f.year;
 ```
 
 ---
+
+## 596. Classes More Than 5 Students
+
+[596. Classes More Than 5 Students](https://leetcode.com/problems/classes-more-than-5-students/)
+
+Write a solution to find all the classes that have at least five students.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Courses table</th> </tr> <tr> <th>student</th> <th>class</th> </tr> <tr><td>A</td><td>Math</td></tr> <tr><td>B</td><td>English</td></tr> <tr><td>C</td><td>Math</td></tr> <tr><td>D</td><td>Biology</td></tr> <tr><td>E</td><td>Math</td></tr> <tr><td>F</td><td>Computer</td></tr> <tr><td>G</td><td>Math</td></tr> <tr><td>H</td><td>Math</td></tr> <tr><td>I</td><td>Math</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>class</th></tr> <tr><td>Math</td></tr> </table> </div> </div>
+
+```sql
+SELECT class FROM courses
+GROUP BY class HAVING COUNT(student) >= 5;
+```
+
+```java
+courses.stream()
+	.collect(Collectors.groupingBy(course -> course.getClass(), Collectors.counting()))
+	.entrySet().stream()
+	.filter(entry -> entry.getValue() >= 5)
+	.map(entry -> entry.getKey())
+	.collect(Collectors.toList())
+```
+
+---
+
+## 1729. Find Followers Count
+
+[1729. Find Followers Count](https://leetcode.com/problems/find-followers-count/)
+
+Write a solution that will, for each user, return the number of followers. Return the result table ordered by user_id in ascending order.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Followers table</th> </tr> <tr> <th>user_id</th> <th>follower_id</th> </tr> <tr><td>0</td><td>1</td></tr> <tr><td>1</td><td>0</td></tr> <tr><td>2</td><td>0</td></tr> <tr><td>2</td><td>1</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>user_id</th><th>followers_count</th></tr> <tr><td>0</td><td>1</td></tr> <tr><td>1</td><td>1</td></tr> <tr><td>2</td><td>2</td></tr> </table> </div> </div>
+
+```sql
+SELECT user_id, COUNT(*) AS followers_count FROM followers
+GROUP BY user_id
+ORDER BY user_id;
+```
+
+---
