@@ -1,4 +1,6 @@
-# Monitoring & Metrics with Micrometer
+---
+{"publish":true,"title":"Metrics","cssclasses":""}
+---
 
 ## Definitions
 
@@ -20,6 +22,10 @@
 
 ## Q&A
 
+**Why collect metrics in production systems?**
+
+Metrics provide quantitative insights into system health, performance, capacity. Alert on error rates >5%, detect slow requests (p95 >500ms), capacity planning (requests/sec growth). Proactive monitoring vs. reactive debugging. Business KPIs (orders/hour, conversion rate).
+
 **Why use Micrometer for metrics?**
 
 Micrometer provides vendor-neutral API; switch monitoring systems without code changes. Integrates seamlessly with Spring Boot Actuator, auto-configures many metrics (JVM, HTTP, database). Supports dimensional metrics (tags) for flexible querying. Standard in Spring Boot; widely adopted, well-documented.
@@ -32,9 +38,11 @@ Spring Boot auto-configures: JVM metrics (memory, GC, threads), HTTP metrics (re
 
 Inject `MeterRegistry`, create counters, timers, gauges. Example: `registry.counter("orders.created").increment()` or `Timer.Sample.start(registry)` for timing. Use `@Timed` annotation on methods for automatic timing. Tag metrics for filtering: `counter("requests", "endpoint", "/api/users")`.
 
-**What's the difference between counter and gauge?**
+**What's the difference between counter, gauge, and timer?**
 
-Counter monotonically increases (total requests, errors). Gauge represents current value (memory usage, thread count). Counter tracks cumulative totals; gauge tracks instantaneous values. Counter never decreases; gauge fluctuates. Use counter for events, gauge for resource levels.
+- **Counter**: cumulative total (requests served). 
+- **Gauge**: current state (active connections). 
+- **Timer**: duration/rate (request latency). Counter for volume, gauge for capacity, timer for performance. All tagged for slicing (per endpoint, user type).
 
 **How do you integrate Micrometer with Prometheus?**
 
@@ -168,6 +176,41 @@ management:
 </dependency>
 ```
 
+**Example - Custom Metrics with Micrometer:**
+
+```java
+@Service
+public class OrderService {
+    private final Counter orderCounter;
+    private final Timer orderTimer;
+    
+    public OrderService(MeterRegistry registry) {
+        this.orderCounter = Counter.builder("orders.total")
+            .description("Total orders processed")
+            .tag("service", "order-service")
+            .register(registry);
+            
+        this.orderTimer = Timer.builder("orders.processing.duration")
+            .description("Order processing latency")
+            .register(registry);
+    }
+    
+    public Order createOrder(OrderRequest request) {
+        Timer.Sample sample = Timer.start(MeterRegistry);
+        
+        try {
+            // Business logic
+            Order order = processOrder(request);
+            orderCounter.increment();
+            return order;
+        } finally {
+            sample.stop(orderTimer);
+        }
+    }
+}
+
+```
+
 ---
 
 ## Key Points
@@ -177,3 +220,6 @@ management:
 - **Cardinality**: Avoid high-cardinality tags (user ID, request ID). Causes metric explosion, performance issues.
 - **Percentiles**: Configure percentiles (p50, p95, p99) for timers; understand latency distribution beyond averages.
 - **Dashboard Tools**: Use Grafana for visualization; pre-built dashboards available for Spring Boot applications.
+- **Four Golden Signals**: Latency, Traffic, Errors, Saturation. Monitor these first.    
+- **SLOs**: Define service level objectives (p95 < 200ms). Alert on violations.
+- **Business Metrics**: Track revenue KPIs alongside technical metrics.

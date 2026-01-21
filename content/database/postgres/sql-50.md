@@ -840,3 +840,33 @@ ORDER BY user_id;
 ```
 
 ---
+
+## 619. Biggest Single Number
+
+[619. Biggest Single Number](https://leetcode.com/problems/biggest-single-number/)
+
+Write a solution to report the largest single number. If there is no single number, report null. A single number is a number that appeared only once.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th>Input: MyNumbers table</th> </tr> <tr> <th>num</th> </tr> <tr><td>8</td></tr> <tr><td>8</td></tr> <tr><td>3</td></tr> <tr><td>3</td></tr> <tr><td>1</td></tr> <tr><td>4</td></tr> <tr><td>5</td></tr> <tr><td>6</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>num</th></tr> <tr><td>6</td></tr> </table> </div> </div>
+
+```sql
+SELECT MAX(num) AS num FROM (
+    SELECT num FROM mynumbers
+    GROUP BY num HAVING COUNT(*) = 1
+)
+```
+
+---
+
+## 1045. Customers Who Bought All Products
+
+[1045. Customers Who Bought All Products](https://leetcode.com/problems/customers-who-bought-all-products/)
+
+Write a solution to report the customer ids that bought all the products in the Product table.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Customer table</th> </tr> <tr> <th>customer_id</th> <th>product_key</th> </tr> <tr><td>1</td><td>5</td></tr> <tr><td>2</td><td>6</td></tr> <tr><td>3</td><td>5</td></tr> <tr><td>3</td><td>6</td></tr> <tr><td>1</td><td>6</td></tr> </table> <table> <tr> <th>Product table</th> </tr> <tr> <th>product_key</th> </tr> <tr><td>5</td></tr> <tr><td>6</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>customer_id</th></tr> <tr><td>1</td></tr> <tr><td>3</td></tr> </table> </div> </div>
+
+```sql
+SELECT customer_id FROM Customer 
+GROUP BY customer_id HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM Product);
+```
