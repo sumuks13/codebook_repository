@@ -870,3 +870,21 @@ Write a solution to report the customer ids that bought all the products in the 
 SELECT customer_id FROM Customer 
 GROUP BY customer_id HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM Product);
 ```
+
+---
+
+## 1731. The Number of Employees Which Report to Each Employee
+
+[1731. The Number of Employees Which Report to Each Employee](https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/)
+
+Write a solution to report the ids and names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee_id.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Employees table</th> </tr> <tr> <th>employee_id</th> <th>name</th> <th>reports_to</th> <th>age</th> </tr> <tr><td>9</td><td>Hercy</td><td>null</td><td>43</td></tr> <tr><td>6</td><td>Alice</td><td>9</td><td>41</td></tr> <tr><td>4</td><td>Bob</td><td>9</td><td>36</td></tr> <tr><td>2</td><td>Winston</td><td>null</td><td>37</td></tr> </table> </div> <div> <table> <tr> <th colspan="4">Output</th> </tr> <tr><th>employee_id</th><th>name</th><th>reports_count</th><th>average_age</th></tr> <tr><td>9</td><td>Hercy</td><td>2</td><td>39</td></tr> </table> </div> </div>
+
+```sql
+SELECT e1.employee_id, e1.name, COUNT(*) AS reports_count, ROUND(AVG(e2.age)) AS average_age
+FROM employees e1
+JOIN employees e2 ON e1.employee_id = e2.reports_to
+GROUP BY e1.employee_id, e1.name
+ORDER BY e1.employee_id;
+```
