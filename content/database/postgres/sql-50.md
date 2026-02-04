@@ -888,3 +888,32 @@ JOIN employees e2 ON e1.employee_id = e2.reports_to
 GROUP BY e1.employee_id, e1.name
 ORDER BY e1.employee_id;
 ```
+
+---
+
+## 1789. Primary Department for Each Employee
+
+[1789. Primary Department for Each Employee](https://leetcode.com/problems/primary-department-for-each-employee/)
+
+Write a solution to report all the employees with their primary department. For employees who belong to one department, report their only department.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="3">Input: Employee table</th> </tr> <tr> <th>employee_id</th> <th>department_id</th> <th>primary_flag</th> </tr> <tr><td>1</td><td>1</td><td>N</td></tr> <tr><td>2</td><td>1</td><td>Y</td></tr> <tr><td>2</td><td>2</td><td>N</td></tr> <tr><td>3</td><td>3</td><td>N</td></tr> <tr><td>4</td><td>2</td><td>N</td></tr> <tr><td>4</td><td>3</td><td>Y</td></tr> <tr><td>4</td><td>4</td><td>N</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>employee_id</th><th>department_id</th></tr> <tr><td>1</td><td>1</td></tr> <tr><td>2</td><td>1</td></tr> <tr><td>3</td><td>3</td></tr> <tr><td>4</td><td>3</td></tr> </table> </div> </div>
+
+```sql
+SELECT employee_id, department_id FROM employee
+WHERE primary_flag = 'Y'
+UNION
+SELECT employee_id, department_id FROM employee
+WHERE employee_id IN (
+    SELECT employee_id FROM employee
+    GROUP BY employee_id HAVING COUNT(*) = 1
+);
+
+
+SELECT employee_id, department_id FROM employee
+WHERE primary_flag = 'Y'
+OR employee_id IN (
+    SELECT employee_id FROM employee
+    GROUP BY employee_id HAVING COUNT(*) = 1
+);
+```
