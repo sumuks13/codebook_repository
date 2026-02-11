@@ -40,7 +40,7 @@ A variable is a named storage location that can be modified during execution; a 
 
 Java has three main scopes: **Local** scope (variables declared inside method/block, accessible only within that block), **Instance** scope (variables tied to object lifetime, accessible throughout object methods), and **Static** scope (class-level variables shared across all objects, accessible via class name).
 
-![]{}[java-scope-hierarchy.png](https://1drv.ms/i/c/ec5d734af8276eb9/IQAKmLD4dlxYRZ-Kye3Yypx4AV21eC7Ue-2jvGCNZIZwd0E?e=jQRflh)
+![[attachments/Pasted image 20260211070203.png]]
 
 **Can local variables be declared as static?**
 
