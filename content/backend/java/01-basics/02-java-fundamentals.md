@@ -10,6 +10,8 @@
 
 **Loop Control**: Keywords like break (exits loop) and continue (skips current iteration) to alter loop behavior.
 
+![[attachments/Pasted image 20260215090710.png]]
+
 ---
 
 ## QnA

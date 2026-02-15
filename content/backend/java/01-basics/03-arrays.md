@@ -121,6 +121,8 @@ int[] arr2 = {1, 2, 3};
 boolean equal = Arrays.equals(arr1, arr2); // true
 ```
 
+![[Pasted image 20260215091821.png]]
+
 ---
 
 ## Key Points
