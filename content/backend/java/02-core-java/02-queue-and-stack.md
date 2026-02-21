@@ -30,9 +30,28 @@ PriorityQueue orders elements by natural order (using Comparable) or a custom Co
 
 No, the Stack class extends Vector (legacy and synchronized). Use Deque with methods `push()`, `pop()`, `peek()` on ArrayDeque instead. ArrayDeque is faster, not synchronized, and provides better performance. For example, `Deque<Integer> stack = new ArrayDeque<>();`
 
+**Which collection method should be used for adding or removing elements?**
+
+| **Method**      | **Interface** | **Action**           | **If Full / Empty?**                           |
+| --------------- | ------------- | -------------------- | ---------------------------------------------- |
+| **`add(e)`**    | `Collection`  | Adds to end (Tail)   | **Throws Exception** (if capacity restricted)  |
+| **`offer(e)`**  | `Queue`       | Adds to end (Tail)   | **Returns `false`** (safe for capacity limits) |
+| **`push(e)`**   | `Deque`       | Adds to front (Head) | **Throws Exception** (if capacity restricted)  |
+| **`remove()`**  | `Queue`       | Removes from Head    | **Throws Exception** if empty                  |
+| **`pop()`**     | `Deque`       | Removes from Head    | **Throws Exception** if empty                  |
+| **`poll()`**    | `Queue`       | Removes from Head    | **Returns `null`** if empty                    |
+| **`element()`** | `Queue`       | Looks at Head        | **Throws Exception** if empty                  |
+| **`peek()`**    | `Queue`       | Looks at Head        | **Returns `null`** if empty                    |
+
+![[attachments/Pasted image 20260221194359.png]]
+
 **What methods does Queue provide?**
 
 Queue provides three types of methods: add/offer (insert), remove/poll (remove), element/peek (inspect). Exception-throwing methods (add, remove, element) throw NoSuchElementException if queue is empty; null-returning methods (offer, poll, peek) return null. Use null-returning versions for safe handling.
+
+**How can add method in Queue result in an Exception?**
+
+The `add(E e)` method will throw an **`IllegalStateException`** if the element cannot be added at that moment due to **capacity restrictions**. This most commonly happens with **Bounded Queues** (queues with a fixed size limit), such as an `ArrayBlockingQueue` or a `LinkedBlockingQueue` that was initialized with a specific capacity.
 
 **Why use Optional instead of null?**
 

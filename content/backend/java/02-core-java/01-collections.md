@@ -6,11 +6,17 @@
 
 **Collection**: Root interface for group of objects. Types: List (ordered), Set (unique), Queue (FIFO).
 
+![[attachments/Pasted image 20260221191629.png]]
+
+![[attachments/Pasted image 20260221192334.png]]
+
 **List**: Ordered collection allowing duplicates and null. Index-based access. Implementations: ArrayList (dynamic array), LinkedList (doubly-linked).
 
 **Set**: Unordered collection disallowing duplicates. No index access. Implementations: HashSet (hash-based), TreeSet (sorted, Red-Black tree).
 
 **Map**: Key-value pairs with unique keys. Implementations: HashMap (fast, unordered), TreeMap (sorted keys), LinkedHashMap (insertion order).
+
+![[attachments/Pasted image 20260221192606.png]]
 
 **Iterator**: Object for traversing collections. Provides hasNext(), next(), remove() methods.
 
@@ -47,6 +53,19 @@ Yes, HashMap allows one null key and multiple null values. This is a key differe
 **What's the default capacity of ArrayList?**
 
 ArrayList starts with a default capacity of 10 elements. When the list becomes full, it grows by 50% (new size = oldSize * 3/2). This dynamic growth strategy balances memory efficiency with performance, avoiding excessive copying operations.
+
+**How does Java know if List.remove(int i) refers to index or value?**
+
+The `List` interface provides two primary `remove` methods:
+1. **`remove(int index)`**: Removes the element at the specified position.
+2. **`remove(Object o)`**: Removes the first occurrence of the specific object.
+
+When your list contains **Integers**, a call like `list.remove(1)` is ambiguous to the human eye, but Java will **always prioritize the primitive `int` (the index)**.
+
+| **Code**                          | **Result**          | **Why?**                                                                      |
+| --------------------------------- | ------------------- | ----------------------------------------------------------------------------- |
+| `list.remove(1)`                  | Removes **Index 1** | Java treats the literal `1` as a primitive `int` by default.                  |
+| `list.remove(Integer.valueOf(1))` | Removes **Value 1** | You are explicitly passing an `Object`, so it matches the value-based method. |
 
 ---
 
