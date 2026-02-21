@@ -17,6 +17,8 @@
 - On methods = cannot override; 
 - on classes = cannot extend.
 
+![[attachments/Pasted image 20260221185330.png]]
+
 ---
 
 ## QnA

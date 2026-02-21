@@ -6,6 +6,7 @@
 
 **Exception**: Abnormal event disrupting normal program flow. Throwable superclass with Error and Exception branches.
 
+![[attachments/Pasted image 20260221191003.png]]
 **Checked Exception**: Must be caught or declared with throws. Compiler enforces handling. Examples: IOException, SQLException, FileNotFoundException.
 
 **Unchecked Exception**: Runtime exceptions; compiler doesn't enforce handling. Extend RuntimeException. Examples: NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException.
