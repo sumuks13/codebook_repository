@@ -917,3 +917,86 @@ OR employee_id IN (
     GROUP BY employee_id HAVING COUNT(*) = 1
 );
 ```
+
+---
+
+## 610. Triangle Judgement
+
+[610. Triangle Judgement](https://leetcode.com/problems/triangle-judgement/)
+
+Write a solution to report for every three line segments whether they can form a triangle.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="3">Input: Triangle table</th> </tr> <tr> <th>x</th> <th>y</th> <th>z</th> </tr> <tr><td>13</td><td>15</td><td>30</td></tr> <tr><td>10</td><td>20</td><td>15</td></tr> </table> </div> <div> <table> <tr> <th colspan="4">Output</th> </tr> <tr><th>x</th><th>y</th><th>z</th><th>triangle</th></tr> <tr><td>13</td><td>15</td><td>30</td><td>No</td></tr> <tr><td>10</td><td>20</td><td>15</td><td>Yes</td></tr> </table> </div> </div>
+
+```sql
+SELECT x, y, z,
+CASE WHEN (x + y > z) AND (y + z > x) AND (z + x > y)
+     THEN 'Yes'
+     ELSE 'No'
+END AS triangle FROM triangle
+```
+
+---
+
+## 180. Consecutive Numbers
+
+[180. Consecutive Numbers](https://leetcode.com/problems/consecutive-numbers/)
+
+Write a solution to find all numbers that appear at least three times consecutively.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Logs table</th> </tr> <tr> <th>id</th> <th>num</th> </tr> <tr><td>1</td><td>1</td></tr> <tr><td>2</td><td>1</td></tr> <tr><td>3</td><td>1</td></tr> <tr><td>4</td><td>2</td></tr> <tr><td>5</td><td>1</td></tr> <tr><td>6</td><td>2</td></tr> <tr><td>7</td><td>2</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>ConsecutiveNums</th></tr> <tr><td>1</td></tr> </table> </div> </div>
+
+```sql
+SELECT DISTINCT l1.num AS consecutivenums FROM logs l1
+JOIN logs l2 ON l1.id = l2.id - 1 AND l1.num = l2.num
+JOIN logs l3 ON l2.id = l3.id - 1 AND l2.num = l3.num;
+```
+
+---
+
+## 1164. Product Price at a Given Date
+
+[1164. Product Price at a Given Date](https://leetcode.com/problems/product-price-at-a-given-date/)
+
+Write a solution to find the prices of all products on 2019-08-16. Assume the price of all products before any change is 10.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="3">Input: Products table</th> </tr> <tr> <th>product_id</th> <th>new_price</th> <th>change_date</th> </tr> <tr><td>1</td><td>20</td><td>2019-08-14</td></tr> <tr><td>2</td><td>50</td><td>2019-08-14</td></tr> <tr><td>1</td><td>30</td><td>2019-08-15</td></tr> <tr><td>1</td><td>35</td><td>2019-08-16</td></tr> <tr><td>2</td><td>65</td><td>2019-08-17</td></tr> <tr><td>3</td><td>20</td><td>2019-08-18</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>product_id</th><th>price</th></tr> <tr><td>2</td><td>50</td></tr> <tr><td>1</td><td>35</td></tr> <tr><td>3</td><td>10</td></tr> </table> </div> </div>
+
+```sql
+WITH latest_prices AS (
+	SELECT product_id, new_price, change_date,
+	ROW_NUMBER() OVER (
+		PARTITION BY product_id 
+		ORDER BY change_date DESC
+	) AS rn 
+	FROM products 
+	WHERE change_date <= '2019-08-16' 
+) 
+
+SELECT product_id, new_price AS price FROM latest_prices 
+WHERE rn = 1 
+UNION 
+SELECT DISTINCT product_id, 10 AS price FROM products 
+WHERE product_id NOT IN (
+	SELECT product_id FROM products WHERE change_date <= '2019-08-16'
+);
+```
+
+```sql
+WITH unique_products AS (
+    SELECT product_id , MAX(change_date) AS date FROM products
+    WHERE change_date <= '2019-08-16'
+    GROUP BY product_id
+),
+
+unique_prices AS (
+    SELECT p.product_id, new_price AS price FROM products p 
+    JOIN unique_products u 
+    ON p.product_id = u.product_id AND p.change_date = u.date
+)
+
+SELECT DISTINCT p.product_id, COALESCE(price, 10) AS price FROM products p
+LEFT JOIN unique_prices u 
+ON p.product_id = u.product_id;
+```
+
