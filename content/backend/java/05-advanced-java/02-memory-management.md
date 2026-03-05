@@ -16,6 +16,8 @@
 
 **Object Eligibility**: Object eligible for GC when no references exist or only through GC roots.
 
+![[attachments/Pasted image 20260305090103.png]]
+
 ---
 
 ## QnA

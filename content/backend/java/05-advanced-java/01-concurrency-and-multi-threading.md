@@ -10,6 +10,8 @@
 
 **Thread Lifecycle**: NEW → RUNNABLE → BLOCKED/WAITING/TIMED_WAITING → TERMINATED.
 
+![[attachments/Pasted image 20260305090941.png]]
+
 **synchronized Keyword**: Method or block restricting access to single thread. Enforces mutual exclusion and happens-before relationship.
 
 **volatile Keyword**: Variables ensuring visibility of writes across threads. Prevents caching; reads/writes always from main memory.
