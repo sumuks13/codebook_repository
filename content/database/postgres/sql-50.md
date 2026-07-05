@@ -1,8 +1,9 @@
 ---
-{"publish":true,"title":"SQL 50","cssclasses":""}
+publish: true
+title: SQL 50
 ---
 
-tags: [postgres](database/postgres/), [[backend/java/04-functional-programming/02-lambdas-and-streams]]
+tags: [postgres](database/postgres/), [[02-lambdas-and-streams]]
 
 [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/)
 **Write a solution to find the ids of products that are both low fat and recyclable.**
@@ -53,6 +54,7 @@ products.stream()
 
 [584. Find Customer Referee](https://leetcode.com/problems/find-customer-referee/)
 **Find the names of the customer that are either:**
+
 1. **referred by** any customer with `id != 2`.
 2. **not referred by** any customer.
 
@@ -106,6 +108,7 @@ customer.stream()
 **[595. Big Countries](https://leetcode.com/problems/big-countries/)**
 Write a solution to find the name, population, and area of the **big countries**.
 A country is **big** if:
+
 - it has an area of at least three million (i.e., `3000000 km2`), or
 - it has a population of at least twenty-five million (i.e., `25000000`).
 
@@ -551,7 +554,7 @@ WHERE bonus IS NULL OR bonus < 1000;
 ---
 
 [1280. Students and Examinations](https://leetcode.com/problems/students-and-examinations/)
-Write a solution to find the number of times each student attended each exam. Return the result table ordered by student_id and subject_name.
+Write a solution to find the number of times each student attended each exam. Return the result table ordered by student\_id and subject\_name.
 
 <div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Students table</th> </tr> <tr> <th>student_id</th> <th>student_name</th> </tr> <tr><td>1</td><td>Alice</td></tr> <tr><td>2</td><td>Bob</td></tr> <tr><td>13</td><td>John</td></tr> <tr><td>6</td><td>Alex</td></tr> </table> <br> <table> <tr> <th colspan="2">Input: Examinations table</th> </tr> <tr> <th>student_id</th> <th>subject_name</th> </tr> <tr><td>1</td><td>Math</td></tr> <tr><td>1</td><td>Physics</td></tr> <tr><td>1</td><td>Programming</td></tr> <tr><td>2</td><td>Programming</td></tr> <tr><td>1</td><td>Physics</td></tr> <tr><td>1</td><td>Math</td></tr> <tr><td>13</td><td>Math</td></tr> <tr><td>13</td><td>Programming</td></tr> <tr><td>13</td><td>Physics</td></tr> <tr><td>2</td><td>Math</td></tr> <tr><td>1</td><td>Math</td></tr> </table> </div> <div> <table> <tr> <th colspan="1">Input: Subjects table</th> </tr> <tr> <th>subject_name</th> </tr> <tr><td>Math</td></tr> <tr><td>Physics</td></tr> <tr><td>Programming</td></tr> </table> <br> <table> <tr> <th colspan="4">Output</th> </tr> <tr><th>student_id</th><th>student_name</th><th>subject_name</th><th>attended_exams</th></tr> <tr><td>1</td><td>Alice</td><td>Math</td><td>3</td></tr> <tr><td>1</td><td>Alice</td><td>Physics</td><td>2</td></tr> <tr><td>1</td><td>Alice</td><td>Programming</td><td>1</td></tr> <tr><td>2</td><td>Bob</td><td>Math</td><td>1</td></tr> <tr><td>2</td><td>Bob</td><td>Physics</td><td>0</td></tr> <tr><td>2</td><td>Bob</td><td>Programming</td><td>1</td></tr> <tr><td>6</td><td>Alex</td><td>Math</td><td>0</td></tr> <tr><td>6</td><td>Alex</td><td>Physics</td><td>0</td></tr> <tr><td>6</td><td>Alex</td><td>Programming</td><td>0</td></tr> <tr><td>13</td><td>John</td><td>Math</td><td>1</td></tr> <tr><td>13</td><td>John</td><td>Physics</td><td>1</td></tr> <tr><td>13</td><td>John</td><td>Programming</td><td>1</td></tr> </table> </div> </div>
 
@@ -640,7 +643,7 @@ GROUP BY p.project_id;
 
 [1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/)
 
-Write a solution to find the percentage of the users registered in each contest rounded to two decimals. Return the result table ordered by percentage in descending order. In case of a tie, order by contest_id in ascending order.
+Write a solution to find the percentage of the users registered in each contest rounded to two decimals. Return the result table ordered by percentage in descending order. In case of a tie, order by contest\_id in ascending order.
 
 <div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Users table</th> </tr> <tr> <th>user_id</th> <th>user_name</th> </tr> <tr><td>6</td><td>Alice</td></tr> <tr><td>2</td><td>Bob</td></tr> <tr><td>7</td><td>Alex</td></tr> </table></div><div> <table> <tr> <th colspan="2">Register table</th> </tr> <tr> <th>contest_id</th> <th>user_id</th> </tr> <tr><td>215</td><td>6</td></tr> <tr><td>209</td><td>2</td></tr> <tr><td>208</td><td>2</td></tr> <tr><td>210</td><td>6</td></tr> <tr><td>208</td><td>6</td></tr> <tr><td>209</td><td>7</td></tr> <tr><td>209</td><td>6</td></tr> <tr><td>215</td><td>7</td></tr> <tr><td>208</td><td>7</td></tr> <tr><td>210</td><td>2</td></tr> <tr><td>207</td><td>2</td></tr> <tr><td>210</td><td>7</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>contest_id</th><th>percentage</th></tr> <tr><td>208</td><td>100.00</td></tr> <tr><td>209</td><td>100.00</td></tr> <tr><td>210</td><td>100.00</td></tr> <tr><td>215</td><td>66.67</td></tr> <tr><td>207</td><td>33.33</td></tr> </table> </div> </div>
 
@@ -667,7 +670,7 @@ ORDER BY percentage desc, contest_id;
 
 [1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/)
 
-Write a solution to find each query_name, the quality and poor_query_percentage. Both quality and poor_query_percentage should be rounded to 2 decimal places. Quality is the average of the ratio between query rating and position. A query is poor if its rating is less than 3.
+Write a solution to find each query\_name, the quality and poor\_query\_percentage. Both quality and poor\_query\_percentage should be rounded to 2 decimal places. Quality is the average of the ratio between query rating and position. A query is poor if its rating is less than 3.
 
 <div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Queries table</th> </tr> <tr> <th>query_name</th> <th>result</th> <th>position</th> <th>rating</th> </tr> <tr><td>Dog</td><td>Golden Retriever</td><td>1</td><td>5</td></tr> <tr><td>Dog</td><td>German Shepherd</td><td>2</td><td>5</td></tr> <tr><td>Dog</td><td>Mule</td><td>200</td><td>1</td></tr> <tr><td>Cat</td><td>Shirazi</td><td>5</td><td>2</td></tr> <tr><td>Cat</td><td>Siamese</td><td>3</td><td>3</td></tr> <tr><td>Cat</td><td>Sphynx</td><td>7</td><td>4</td></tr> </table> </div> <div> <table> <tr> <th colspan="3">Output</th> </tr> <tr><th>query_name</th><th>quality</th><th>poor_query_percentage</th></tr> <tr><td>Dog</td><td>2.50</td><td>33.33</td></tr> <tr><td>Cat</td><td>0.66</td><td>33.33</td></tr> </table> </div> </div>
 
@@ -765,6 +768,7 @@ GROUP BY teacher_id;
 ```
 
 ---
+
 ## 1141. User Activity for the Past 30 Days I
 
 [1141. User Activity for the Past 30 Days I](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/)
@@ -829,7 +833,7 @@ courses.stream()
 
 [1729. Find Followers Count](https://leetcode.com/problems/find-followers-count/)
 
-Write a solution that will, for each user, return the number of followers. Return the result table ordered by user_id in ascending order.
+Write a solution that will, for each user, return the number of followers. Return the result table ordered by user\_id in ascending order.
 
 <div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Followers table</th> </tr> <tr> <th>user_id</th> <th>follower_id</th> </tr> <tr><td>0</td><td>1</td></tr> <tr><td>1</td><td>0</td></tr> <tr><td>2</td><td>0</td></tr> <tr><td>2</td><td>1</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>user_id</th><th>followers_count</th></tr> <tr><td>0</td><td>1</td></tr> <tr><td>1</td><td>1</td></tr> <tr><td>2</td><td>2</td></tr> </table> </div> </div>
 
@@ -877,7 +881,7 @@ GROUP BY customer_id HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM 
 
 [1731. The Number of Employees Which Report to Each Employee](https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/)
 
-Write a solution to report the ids and names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee_id.
+Write a solution to report the ids and names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee\_id.
 
 <div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Employees table</th> </tr> <tr> <th>employee_id</th> <th>name</th> <th>reports_to</th> <th>age</th> </tr> <tr><td>9</td><td>Hercy</td><td>null</td><td>43</td></tr> <tr><td>6</td><td>Alice</td><td>9</td><td>41</td></tr> <tr><td>4</td><td>Bob</td><td>9</td><td>36</td></tr> <tr><td>2</td><td>Winston</td><td>null</td><td>37</td></tr> </table> </div> <div> <table> <tr> <th colspan="4">Output</th> </tr> <tr><th>employee_id</th><th>name</th><th>reports_count</th><th>average_age</th></tr> <tr><td>9</td><td>Hercy</td><td>2</td><td>39</td></tr> </table> </div> </div>
 
@@ -1000,3 +1004,29 @@ LEFT JOIN unique_prices u
 ON p.product_id = u.product_id;
 ```
 
+---
+
+## 1978. Employees Whose Manager Left the Company
+
+[1978. Employees Whose Manager Left the Company](https://leetcode.com/problems/employees-whose-manager-left-the-company/)
+
+Write a solution to report the IDs of the employees whose salary is strictly less than \$30000 and whose manager left the company. Return the result table ordered by employee\_id.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Employees table</th> </tr> <tr> <th>employee_id</th> <th>name</th> <th>manager_id</th> <th>salary</th> </tr> <tr><td>3</td><td>Mila</td><td>9</td><td>60301</td></tr> <tr><td>12</td><td>Antonella</td><td>null</td><td>31000</td></tr> <tr><td>13</td><td>Emery</td><td>null</td><td>67084</td></tr> <tr><td>1</td><td>Kalel</td><td>11</td><td>21241</td></tr> <tr><td>9</td><td>Mikaela</td><td>null</td><td>50937</td></tr> <tr><td>11</td><td>Joziah</td><td>6</td><td>28485</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>employee_id</th></tr> <tr><td>11</td></tr> </table> </div> </div>
+
+```sql
+SELECT e1.employee_id FROM employees e1
+LEFT JOIN employees e2 ON e1.manager_id = e2.employee_id
+WHERE e2.employee_id IS NULL
+AND e1.manager_id IS NOT NULL
+AND e1.salary < 30000
+ORDER BY e1.employee_id
+```
+
+```sql
+SELECT employee_id FROM Employees 
+WHERE salary < 30000 AND manager_id IS NOT NULL 
+AND manager_id NOT IN 
+	(SELECT employee_id FROM Employees) 
+ORDER BY employee_id;
+```
