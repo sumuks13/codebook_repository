@@ -1006,6 +1006,35 @@ ON p.product_id = u.product_id;
 
 ---
 
+## 1204. Last Person to Fit in the Bus
+
+[1204. Last Person to Fit in the Bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/)
+
+Write a solution to find the person\_name of the last person that can fit on the bus without exceeding the weight limit. The weight limit is 1000 kilograms.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="4">Input: Queue table</th> </tr> <tr> <th>person_id</th> <th>person_name</th> <th>weight</th> <th>turn</th> </tr> <tr><td>5</td><td>Alice</td><td>250</td><td>1</td></tr> <tr><td>4</td><td>Bob</td><td>175</td><td>5</td></tr> <tr><td>3</td><td>Alex</td><td>350</td><td>2</td></tr> <tr><td>6</td><td>John Cena</td><td>400</td><td>3</td></tr> <tr><td>1</td><td>Winston</td><td>500</td><td>6</td></tr> <tr><td>2</td><td>Marie</td><td>200</td><td>4</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>person_name</th></tr> <tr><td>John Cena</td></tr> </table> </div> </div>
+
+```sql
+SELECT person_name FROM (
+    SELECT person_name, SUM(weight) OVER(ORDER BY turn) AS total_weight
+    FROM queue
+)
+WHERE total_weight <= 1000
+ORDER BY total_weight DESC LIMIT 1;
+```
+
+```sql
+WITH RunningTotal AS (
+	SELECT person_name, SUM(weight) OVER (ORDER BY turn) AS cumulative_weight
+	FROM Queue
+)
+SELECT person_name FROM RunningTotal 
+WHERE cumulative_weight <= 1000 
+ORDER BY cumulative_weight DESC LIMIT 1;
+```
+
+---
+
 ## 1978. Employees Whose Manager Left the Company
 
 [1978. Employees Whose Manager Left the Company](https://leetcode.com/problems/employees-whose-manager-left-the-company/)
