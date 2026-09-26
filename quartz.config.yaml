@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: sumuks13.github.io
+  baseUrl: sumuks13.github.io/codebook_repository
   ignorePatterns:
     - private
     - templates
@@ -143,7 +143,6 @@ plugins:
     options:
       enableSiteMap: true
       enableRSS: true
-      rssSlug: "rss"
   - source: "@quartz-community/favicon"
     enabled: true
   - source: "@quartz-community/og-image"
