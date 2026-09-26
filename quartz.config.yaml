@@ -143,6 +143,7 @@ plugins:
     options:
       enableSiteMap: true
       enableRSS: true
+      rssSlug: "rss"
   - source: "@quartz-community/favicon"
     enabled: true
   - source: "@quartz-community/og-image"
