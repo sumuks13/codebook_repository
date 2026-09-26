@@ -1035,6 +1035,27 @@ ORDER BY cumulative_weight DESC LIMIT 1;
 
 ---
 
+## 1907. Count Salary Categories
+
+[1907. Count Salary Categories](https://leetcode.com/problems/count-salary-categories/)
+
+Write a solution to calculate the number of bank accounts for each salary category. The salary categories are: 'Low Salary' (< 20000), 'Average Salary' (20000-50000 inclusive), 'High Salary' (> 50000).
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Accounts table</th> </tr> <tr> <th>account_id</th> <th>income</th> </tr> <tr><td>3</td><td>108939</td></tr> <tr><td>2</td><td>12747</td></tr> <tr><td>8</td><td>87709</td></tr> <tr><td>6</td><td>91796</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>category</th><th>accounts_count</th></tr> <tr><td>Low Salary</td><td>1</td></tr> <tr><td>Average Salary</td><td>0</td></tr> <tr><td>High Salary</td><td>3</td></tr> </table> </div> </div>
+
+```sql
+SELECT 'Low Salary' as category, count(*) as accounts_count
+FROM accounts WHERE income < 20000
+UNION ALL
+SELECT 'Average Salary' as category, count(*) as accounts_count
+FROM accounts WHERE income >= 20000 AND income <= 50000
+UNION ALL
+SELECT 'High Salary' as category, count(*) as accounts_count
+FROM accounts WHERE income > 50000
+```
+
+---
+
 ## 1978. Employees Whose Manager Left the Company
 
 [1978. Employees Whose Manager Left the Company](https://leetcode.com/problems/employees-whose-manager-left-the-company/)
