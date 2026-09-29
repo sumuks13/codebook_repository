@@ -1080,3 +1080,22 @@ AND manager_id NOT IN
 	(SELECT employee_id FROM Employees) 
 ORDER BY employee_id;
 ```
+
+---
+
+## 626. Exchange Seats
+
+[626. Exchange Seats](https://leetcode.com/problems/exchange-seats/)
+
+Write a solution to swap the seat id of every two consecutive students. If the number of students is odd, the id of the last student is not swapped.
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Seat table</th> </tr> <tr> <th>id</th> <th>student</th> </tr> <tr><td>1</td><td>Abbot</td></tr> <tr><td>2</td><td>Doris</td></tr> <tr><td>3</td><td>Emerson</td></tr> <tr><td>4</td><td>Green</td></tr> <tr><td>5</td><td>Jeames</td></tr> </table> </div> <div> <table> <tr> <th colspan="2">Output</th> </tr> <tr><th>id</th><th>student</th></tr> <tr><td>1</td><td>Doris</td></tr> <tr><td>2</td><td>Abbot</td></tr> <tr><td>3</td><td>Green</td></tr> <tr><td>4</td><td>Emerson</td></tr> <tr><td>5</td><td>Jeames</td></tr> </table> </div> </div>
+
+```sql
+SELECT CASE
+    WHEN id % 2 = 1 AND id <> (SELECT MAX(id) FROM seat) THEN id + 1
+    WHEN id % 2 = 0 THEN id - 1
+    ELSE id
+END AS id, student FROM seat
+ORDER BY id
+```
