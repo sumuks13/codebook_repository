@@ -1099,3 +1099,30 @@ SELECT CASE
 END AS id, student FROM seat
 ORDER BY id
 ```
+
+---
+
+## 1341. Movie Rating
+
+[1341. Movie Rating](https://leetcode.com/problems/movie-rating/)
+
+Write a solution to find the name of the user who has rated the greatest number of movies (in case of a tie, return the lexicographically smaller user name), and the movie name with the highest average rating in February 2020 (in case of a tie, return the lexicographically smaller movie name).
+
+<div style="display:flex; gap:40px;"> <div> <table> <tr> <th colspan="2">Input: Movies table</th> </tr> <tr> <th>movie_id</th> <th>title</th> </tr> <tr><td>1</td><td>Avengers</td></tr> <tr><td>2</td><td>Frozen 2</td></tr> <tr><td>3</td><td>Joker</td></tr> </table> <table> <tr> <th colspan="2">Users table</th> </tr> <tr> <th>user_id</th> <th>name</th> </tr> <tr><td>1</td><td>Daniel</td></tr> <tr><td>2</td><td>Monica</td></tr> <tr><td>3</td><td>Maria</td></tr> <tr><td>4</td><td>James</td></tr> </table> <table> <tr> <th colspan="4">MovieRating table</th> </tr> <tr> <th>movie_id</th> <th>user_id</th> <th>rating</th> <th>created_at</th> </tr> <tr><td>1</td><td>1</td><td>3</td><td>2020-01-12</td></tr> <tr><td>1</td><td>2</td><td>4</td><td>2020-02-11</td></tr> <tr><td>1</td><td>3</td><td>2</td><td>2020-02-12</td></tr> <tr><td>1</td><td>4</td><td>1</td><td>2020-01-01</td></tr> <tr><td>2</td><td>1</td><td>5</td><td>2020-02-17</td></tr> <tr><td>2</td><td>2</td><td>2</td><td>2020-02-01</td></tr> <tr><td>2</td><td>3</td><td>2</td><td>2020-03-01</td></tr> <tr><td>3</td><td>1</td><td>3</td><td>2020-02-22</td></tr> <tr><td>3</td><td>2</td><td>4</td><td>2020-02-25</td></tr> </table> </div> <div> <table> <tr> <th>Output</th> </tr> <tr><th>results</th></tr> <tr><td>Daniel</td></tr> <tr><td>Frozen 2</td></tr> </table> </div> </div>
+
+```sql
+(SELECT name AS results FROM users u
+JOIN movierating mr on u.user_id = mr.user_id
+GROUP BY name
+ORDER BY count(*) DESC, name
+LIMIT 1)
+
+UNION ALL
+
+(SELECT title AS results FROM movies m
+JOIN movierating mr on m.movie_id = mr.movie_id
+WHERE created_at >= '2020-02-01' AND created_at <= '2020-02-29'
+GROUP BY title
+ORDER BY AVG(rating) DESC, title
+LIMIT 1)
+```
